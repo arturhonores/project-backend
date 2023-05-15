@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-class moviesApiHandler {
+class MoviesApiHandler {
     constructor() {
         this.axiosApp = axios.create({
             baseURL: 'https://streaming-availability.p.rapidapi.com/v2',
@@ -19,7 +19,7 @@ class moviesApiHandler {
             method: 'GET',
             url: '/search/pro',
             params: {
-                country: 'es',
+                country: 'us',
                 services: 'prime.subscription',
                 output_language: 'en',
                 genres: '80',
@@ -49,4 +49,4 @@ class moviesApiHandler {
     }
 }
 
-module.exports = moviesApiHandler;
+module.exports = MoviesApiHandler;
