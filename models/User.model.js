@@ -17,7 +17,6 @@ const userSchema = new Schema(
       lowercase: true,
       trim: true,
       minlength: 3
-
     },
     password: {
       type: String,
@@ -25,8 +24,9 @@ const userSchema = new Schema(
       trim: true,
       minlength: 3
     },
-    events: {
-      enum: [ ]
+    avatar: 
+    { type: String, 
+      default: 'https://i.stack.imgur.com/l60Hf.png' 
     },
     role: {
       type: String,

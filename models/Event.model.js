@@ -25,7 +25,11 @@ const eventSchema = new Schema(
     attendees: {
       type: Number,
       required: true,
-    }
+    },
+     participants:[{
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
