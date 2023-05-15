@@ -15,7 +15,7 @@ module.exports = app => {
                 maxAge: 6000000000
             },
             store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/project-2-backend'
+                mongoUrl: process.env.MONGODB_URI || 'mongodb+srv://paulalaluengo:EHJZuH2TYrq4rzeZ@cluster0.t6bdmfn.mongodb.net/project-backend'
             })
         })
     );

@@ -19,11 +19,17 @@
     </div>
     <div class="row">
       <div class="col text-center p-4">
+        {{#if hasPrevious}}
+          <a
+            href="/peliculas-new?cursor={{previousCursor}}"
+            class="btn btn-warning text-white"
+          >Previous</a>
+        {{/if}}
         {{#if hasMore}}
           <a
             href="/peliculas-new?cursor={{nextCursor}}"
             class="btn btn-warning text-white"
-          >next</a>
+          >Next</a>
         {{/if}}
       </div>
     </div>
