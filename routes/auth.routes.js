@@ -45,7 +45,7 @@ router.post('/iniciar-sesion', (req, res, next) => {
             }
 
             req.session.currentUser = foundUser // login!
-            res.redirect('/')
+            res.redirect('/perfil')
         })
 })
 

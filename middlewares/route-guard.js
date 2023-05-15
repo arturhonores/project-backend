@@ -19,4 +19,4 @@ const checkRoles = (...admittedRoles) => (req, res, next) => {
     }
 }
 
-module.exports = { isLoggedIn, isLoggedOut, checkRoles }
+module.exports = { isLoggedIn, checkRoles }

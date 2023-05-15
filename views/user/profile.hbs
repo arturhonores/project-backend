@@ -1,0 +1,10 @@
+<div class="container pt-5 mt-5">
+    <h1>Bienvenid@, {{user.username}}</h1>
+    <hr>
+    <p>Tu email es {{user.email}}</p>
+    <a href="/perfil/editar-perfil/{{user._id}}">Editar perfil</a>
+    <form action="/perfil/eliminar-perfil/{{user._id}}" method="POST" style="display: inline">
+        <input type="submit" value="Eliminar perfil" class="btn btn-sm btn-danger">
+    </form>
+
+</div>
