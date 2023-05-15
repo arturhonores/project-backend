@@ -16,51 +16,51 @@ Sólo es necesario contar con un servidor web con Node.js
 
 #### 1. Authenticated Routs
 
-| HTTP Method | URL Path        | Description          | JSON |
-| ----------- | --------------- | -------------------- | ---- |
-| GET         | /               | Index page           |      |
-| GET         | /registro       | Sign Up form render  |      |
-| POST        | /registro       | Sign Up form handler |      |
-| GET         | /iniciar-sesion | Login form render    |      |
-| POST        | /iniciar-sesion | Login form handler   |      |
-| GET         | /desconectar/   | Logout               |      |
+| HTTP Method | URL Path          | Description          | JSON |
+| ----------- | ----------------- | -------------------- | ---- |
+| GET         | `/`               | Index page           |      |
+| GET         | `/registro`       | Sign Up form render  |      |
+| POST        | `/registro`       | Sign Up form handler |      |
+| GET         | `/iniciar-sesion` | Login form render    |      |
+| POST        | `/iniciar-sesio`n | Login form handler   |      |
+| GET         | ` /desconectar/`  | Logout               |      |
 
 #### 2. User Routs
 
-| HTTP Method | URL Path                        | Description                   | JSON |
-| ----------- | ------------------------------- | ----------------------------- | ---- |
-| GET         | /perfil                         | profile                       |      |
-| GET         | /perfil/editar/:id              | profile edit                  |      |
-| POST        | /perfil/editar/:id              | profile edit form handler     |      |
-| POST        | /perfil/eliminar/:id            | profile delete                |      |
-| GET         | /usuario/crear/watchlist        | New watchlist                 |      |
-| POST        | /usuario/crear/watchlist/:id    | New watchlist form handler    |      |
-| GET         | /usuario/editar/watchlist/:id   | watchlist edit                |      |
-| POST        | /usuario/editar/watchlist/:id   | watchlist edit form handler   |      |
-| POST        | /usuario/eliminar/watchlist/:id | watchlist delete form handler |      |
+| HTTP Method | URL Path                          | Description                   | JSON |
+| ----------- | --------------------------------- | ----------------------------- | ---- |
+| GET         | `/perfil`                         | profile                       |      |
+| GET         | `/perfil/editar/:id`              | profile edit                  |      |
+| POST        | `/perfil/editar/:id`              | profile edit form handler     |      |
+| POST        | `/perfil/eliminar/:id`            | profile delete                |      |
+| GET         | `/usuario/crear/watchlist`        | New watchlist                 |      |
+| POST        | `/usuario/crear/watchlist/:id`    | New watchlist form handler    |      |
+| GET         | `/usuario/editar/watchlist/:id`   | watchlist edit                |      |
+| POST        | `/usuario/editar/watchlist/:id`   | watchlist edit form handler   |      |
+| POST        | `/usuario/eliminar/watchlist/:id` | watchlist delete form handler |      |
 
 #### 2. API Routs
 
-| HTTP Method | URL Path      | Description    | JSON |
-| ----------- | ------------- | -------------- | ---- |
-| GET         | /movies       | Movie List     | ✅   |
-| GET         | /movies/:id   | Movie details  | ✅   |
-| POST        | filter/movies | Filter movies  | ✅   |
-| GET         | /series       | Series List    | ✅   |
-| GET         | /series/:id   | Series details | ✅   |
-| POST        | filter/series | Filter series  | ✅   |
+| HTTP Method | URL Path        | Description    | JSON |
+| ----------- | --------------- | -------------- | ---- |
+| GET         | `/movies`       | Movie List     | ✅    |
+| GET         | `/movies/:id`   | Movie details  | ✅    |
+| POST        | `filter/movies` | Filter movies  | ✅    |
+| GET         | `/series`       | Series List    | ✅    |
+| GET         | ` /series/:id`  | Series details | ✅    |
+| POST        | `filter/series` | Filter series  | ✅    |
 
 #### 3. Events Routs
 
-| HTTP Method | URL Path              | Description                | JSON |
-| ----------- | --------------------- | -------------------------- | ---- |
-| GET         | /eventos/crear        | New event                  |      |
-| POST        | /eventos/crear        | New event form handler     |      |
-| GET         | /eventos/lista        | Events list                |      |
-| GET         | /eventos/detalles/:id | Events details             |      |
-| GET         | /eventos/editar/:id   | Events edit                |      |
-| POST        | /eventos/editar/:id   | Events edit form handler   |      |
-| POST        | /eventos/eliminar/:id | Events delete form handler |      |
+| HTTP Method | URL Path                | Description                | JSON |
+| ----------- | ----------------------- | -------------------------- | ---- |
+| GET         | `/eventos/crear`        | New event                  |      |
+| POST        | `/eventos/crear`        | New event form handler     |      |
+| GET         | `/eventos/lista`        | Events list                |      |
+| GET         | `/eventos/detalles/:id` | Events details             |      |
+| GET         | `/eventos/editar/:id`   | Events edit                |      |
+| POST        | `/eventos/editar/:id`   | Events edit form handler   |      |
+| POST        | `/eventos/eliminar/:id` | Events delete form handler |      |
 
 ---
 
