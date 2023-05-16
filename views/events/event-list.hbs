@@ -1,0 +1,25 @@
+<div class="container pt-5 mt-5 justify-content-center">
+    <div class="col-md-8">
+        <h2>Todos los eventos</h2>
+        <hr>
+        <div class="row">
+            <ul>
+                {{#each events}}
+                <li><strong>{{this.name}}</strong></li>
+                {{this.description}}
+                {{this.location}}
+                {{this.date}}
+                <a href="/eventos/editar/{{this._id}}">editar evento</a>
+                <form action="/eventos/eliminar/{{this._id}}" method="POST" style="display: inline; "
+                    class="btn btn-warning">
+                    <input type="submit" value="eliminar">
+                </form>
+
+
+                {{/each}}
+            </ul>
+            <a href="/eventos/crear"> crear evento</a>
+        </div>
+
+    </div>
+</div>

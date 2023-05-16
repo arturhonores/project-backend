@@ -26,7 +26,7 @@ const eventSchema = new Schema(
     },
     attendees: {
       type: Number,
-      required: true,
+      
     },
      participants:[{
       type: Schema.Types.ObjectId,
