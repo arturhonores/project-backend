@@ -13,6 +13,8 @@ const eventSchema = new Schema(
       required: true,
       minlength: 3,
     },
+    imageUrl:{ type: String,  
+    },
     location: {
       type: String,
       required: true,
