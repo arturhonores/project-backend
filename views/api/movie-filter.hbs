@@ -5,25 +5,74 @@
     method="POST"
   >
     <div class="col-auto">
-      <label class="visually-hidden" for="country">Country</label>
-      <input
-        type="text"
-        class="form-control"
-        id="country"
-        placeholder="country"
-        name="country"
-      />
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="netflix"
+          id="flexChecnetflix"
+          name="services"
+        />
+        <label class="form-check-label" for="flexChecnetflix">
+          Netflix
+        </label>
+      </div>
     </div>
     <div class="col-auto">
-      <label class="visually-hidden" for="country">Services</label>
-      <input
-        type="text"
-        class="form-control"
-        id="country"
-        placeholder="services"
-        name="services"
-      />
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="prime.subscription"
+          id="flexCheckprime"
+          name="services"
+        />
+        <label class="form-check-label" for="flexCheckdisney">
+          Amazon Prime
+        </label>
+      </div>
     </div>
+    <div class="col-auto">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="disney"
+          id="flexCheckdisney"
+          name="services"
+        />
+        <label class="form-check-label" for="flexCheckhbo">
+          Disney
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="hbo"
+          id="flexCheckhbo"
+          name="services"
+        />
+        <label class="form-check-label" for="flexCheckprime">
+          HBO
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAction"
+          value="28"
+        />
+        <label class="form-check-label" for="inlineRadioAction">Action</label>
+      </div>
+    </div>
+
     <div class="col-auto">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>

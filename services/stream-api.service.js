@@ -12,16 +12,16 @@ class MoviesApiHandler {
         this.previousCursors = [];
     }
 
-    createQueryParams(cursor, country, services) {
+    createQueryParams(cursor, country, services, genres) {
         return {
-            country: country || 'us',
+            country: 'es',
             services: services || 'prime.subscription',
             output_language: 'en',
-            genres: '80',
+            genres: genres || '1',
             show_type: 'movie',
             genres_relation: 'or',
             show_original_language: 'en',
-            year_min: '2021',
+            year_min: '2000',
             year_max: '2025',
             order_by: 'year',
             desc: 'true',
@@ -72,13 +72,13 @@ class MoviesApiHandler {
     }
 
     async getFilteredMovies(req, res, next) {
-        const { country, services } = req.body;
+        const { country, services, genres } = req.body;
 
         try {
             const options = {
                 method: 'GET',
                 url: '/search/pro',
-                params: this.createQueryParams(undefined, country, services)
+                params: this.createQueryParams(undefined, country, services, genres)
             };
 
             const response = await this.axiosApp.request(options);

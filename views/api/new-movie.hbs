@@ -1,6 +1,6 @@
 <div class="bg-dark h-auto">
   <div class="container pt-5">
-    <h1 class="text-white text-center pt-5">API Data</h1>
+    <h1 class="text-white text-center pt-5">Movies 2023</h1>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
       {{#each movie.result}}
         <div class="col">
@@ -20,16 +20,16 @@
     <div class="row">
       <div class="col text-center p-4">
         {{!-- {{#if hasPrevious}} --}}
-          <a
-            href="/peliculas-new?cursor={{previousCursor}}"
-            class="btn btn-warning text-white"
-          >Previous</a>
+        <a
+          href="/peliculas-new?cursor={{previousCursor}}"
+          class="btn btn-warning text-white"
+        >Previous</a>
         {{!-- {{/if}} --}}
         {{!-- {{#if hasMore}} --}}
-          <a
-            href="/peliculas-new?cursor={{nextCursor}}"
-            class="btn btn-warning text-white"
-          >Next</a>
+        <a
+          href="/peliculas-new?cursor={{nextCursor}}"
+          class="btn btn-warning text-white"
+        >Next</a>
         {{!-- {{/if}} --}}
       </div>
     </div>
