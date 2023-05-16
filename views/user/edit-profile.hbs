@@ -7,52 +7,34 @@
       <h1>Editar {{username}}</h1>
       <hr />
 
-      <form action="/perfil/editar-perfil/{{_id}}" method="POST">
+      <form action="/perfil/editar-perfil/{{_id}}" method="POST" enctype="multipart/form-data">
 
         <div class="mb-3 row">
           <div class="col">
             <label for="emailInput" class="form-label">Dirección de email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="emailInput"
-              name="email"
-              value="{{email}}"
-            />
+            <input type="email" class="form-control" id="emailInput" name="email" value="{{email}}" />
           </div>
 
         </div>
 
         <div class="mb-3">
           <label for="usernameInput" class="form-label">Nombre de usuario</label>
-          <input
-            type="text"
-            class="form-control"
-            id="usernameInput"
-            name="username"
-            value="{{username}}"
-          />
+          <input type="text" class="form-control" id="usernameInput" name="username" value="{{username}}" />
+        </div>
+        <div class="mb-3">
+          <label for="avatar" class="form-label">Avatar</label>
+          <input type="file" class="form-control" id="avatar" name="avatar" />
         </div>
 
-        {{! <div class="mb-3">
-                    <label for="imageInput" class="form-label">Imagen</label>
-                    <input type="url" class="form-control" id="imageInput" name="profileImg">
-                    <div class="form-text">Introduce la URL a la imagen que desees de perfil.</div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="descriptionInput" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descriptionInput" rows="3" name="description"></textarea>
-                </div> }}
 
         <div class="d-grid gap-2">
           <button type="submit" class="btn btn-dark block">Editar</button>
         </div>
 
         {{#if errorMessage}}
-          <div id="errorMessage">
-            <p>{{errorMessage}}</p>
-          </div>
+        <div id="errorMessage">
+          <p>{{errorMessage}}</p>
+        </div>
         {{/if}}
 
       </form>
