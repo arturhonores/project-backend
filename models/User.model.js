@@ -24,9 +24,7 @@ const userSchema = new Schema(
       trim: true,
       minlength: 3
     },
-    avatar: 
-    { type: String, 
-      default: 'https://i.stack.imgur.com/l60Hf.png' 
+    avatar:{ type: String,  
     },
     role: {
       type: String,
@@ -35,7 +33,6 @@ const userSchema = new Schema(
     }
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
 );
