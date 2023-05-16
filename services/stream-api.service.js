@@ -12,10 +12,10 @@ class MoviesApiHandler {
         this.previousCursors = [];
     }
 
-    createQueryParams(cursor) {
+    createQueryParams(cursor, country, services) {
         return {
-            country: 'es',
-            services: 'prime.subscription',
+            country: country || 'us',
+            services: services || 'prime.subscription',
             output_language: 'en',
             genres: '80',
             show_type: 'movie',
@@ -70,7 +70,36 @@ class MoviesApiHandler {
             next(err);
         }
     }
+
+    async getFilteredMovies(req, res, next) {
+        const { country, services } = req.body;
+
+        try {
+            const options = {
+                method: 'GET',
+                url: '/search/pro',
+                params: this.createQueryParams(undefined, country, services)
+            };
+
+            const response = await this.axiosApp.request(options);
+            const movieData = response.data;
+
+            res.render('api/movie-filter', {
+                movie: movieData,
+                hasPrevious: this.previousCursors.length > 1,
+                previousCursor: this.previousCursors[this.previousCursors.length - 2],
+                hasMore: movieData.hasMore,
+                nextCursor: movieData.nextCursor
+            });
+
+        } catch (err) {
+            next(err);
+        }
+    }
+
 }
+
+
 
 module.exports = MoviesApiHandler;
 

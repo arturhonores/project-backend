@@ -11,6 +11,10 @@ router.get('/peliculas-filtradas', (req, res, next) => {
     res.render("api/movie-filter");
 });
 
+router.post('/peliculas-filtradas', (req, res, next) => {
+    const apiHandler = new MoviesApiHandler();
+    apiHandler.getFilteredMovies(req, res, next);
+});
 
 module.exports = router;
 
