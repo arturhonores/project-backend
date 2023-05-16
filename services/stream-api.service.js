@@ -14,14 +14,13 @@ class MoviesApiHandler {
 
     createQueryParams(cursor, country, services) {
         return {
-            country: country || 'us',
-            services: services || 'prime.subscription',
+            country: country || 'es',
+            services: services || 'netflix,prime.subscription,disney,hbo',
             output_language: 'en',
-            genres: '80',
-            show_type: 'movie',
+            genres: '1, 2, 3, 4, 5, 6, 7, 12, 14, 16, 18, 27, 28, 35, 36, 37, 53, 80, 99, 878, 9648, 10402, 10749, 10751, 10752, 10763, 10764, 10767',            show_type: 'movie',
             genres_relation: 'or',
             show_original_language: 'en',
-            year_min: '2021',
+            year_min: '2022',
             year_max: '2025',
             order_by: 'year',
             desc: 'true',
