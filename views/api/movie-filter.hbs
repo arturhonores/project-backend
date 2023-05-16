@@ -1,28 +1,12 @@
 <div class="container pt-5 mt-5">
-  <form
-    class="row gy-2 gx-3 align-items-center"
-    action="/peliculas-filtradas"
-    method="POST"
-  >
+  <form class="row gy-2 gx-3 align-items-center" action="/peliculas-filtradas" method="POST">
     <div class="col-auto">
       <label class="visually-hidden" for="country">Country</label>
-      <input
-        type="text"
-        class="form-control"
-        id="country"
-        placeholder="country"
-        name="country"
-      />
+      <input type="text" class="form-control" id="country" placeholder="country" name="country" />
     </div>
     <div class="col-auto">
       <label class="visually-hidden" for="country">Services</label>
-      <input
-        type="text"
-        class="form-control"
-        id="country"
-        placeholder="services"
-        name="services"
-      />
+      <input type="text" class="form-control" id="country" placeholder="services" name="services" />
     </div>
     <div class="col-auto">
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -32,33 +16,23 @@
     <h1 class="text-white text-center pt-5">API Data</h1>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
       {{#each movie.result}}
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://image.tmdb.org/t/p/original{{posterPath}}"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title text-center">{{title}}</h5>
-            </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title text-center">{{title}}</h5>
           </div>
         </div>
+      </div>
       {{/each}}
     </div>
     <div class="row">
       <div class="col text-center p-4">
         {{!-- {{#if hasPrevious}} --}}
-        <a
-          href="/peliculas-new?cursor={{previousCursor}}"
-          class="btn btn-warning text-white"
-        >Previous</a>
+        <a href="/peliculas-new?cursor={{previousCursor}}" class="btn btn-warning text-white">Previous</a>
         {{!-- {{/if}} --}}
         {{!-- {{#if hasMore}} --}}
-        <a
-          href="/peliculas-new?cursor={{nextCursor}}"
-          class="btn btn-warning text-white"
-        >Next</a>
+        <a href="/peliculas-new?cursor={{nextCursor}}" class="btn btn-warning text-white">Next</a>
         {{!-- {{/if}} --}}
       </div>
     </div>
