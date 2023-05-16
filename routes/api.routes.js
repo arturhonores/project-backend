@@ -7,6 +7,11 @@ router.get('/peliculas-new', (req, res, next) => {
     apiHandler.getMovies(req, res, next);
 });
 
+router.get('/peliculas-filtradas', (req, res, next) => {
+    res.render("api/movie-filter");
+});
+
+
 module.exports = router;
 
 
