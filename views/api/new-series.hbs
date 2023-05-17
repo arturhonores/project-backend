@@ -1,0 +1,36 @@
+<div class="bg-dark h-auto">
+    <div class="container pt-5">
+        <h1 class="text-white text-center pt-5">Series 2023</h1>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+            {{#each show.result}}
+            <div class="col">
+                <div class="card">
+                    <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p>IMDB Rating :{{imdbRating}}</p>
+                        <p>Release year: {{firstAirYear}} </p>
+                        {{#each streamingData}}
+                        {{@key}}
+                        <a href="{{this.url}}" class="btn btn-warning" target="_blank">
+                            Watch on
+                            {{@key}}
+                        </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="row">
+            <div class="col text-center p-4">
+                {{!-- {{#if hasPrevious}} --}}
+                <a href="/series-new?cursor={{previousCursor}}" class="btn btn-warning text-white">Previous</a>
+                {{!-- {{/if}} --}}
+                {{!-- {{#if hasMore}} --}}
+                <a href="/series-new?cursor={{nextCursor}}" class="btn btn-warning text-white">Next</a>
+                {{!-- {{/if}} --}}
+            </div>
+        </div>
+    </div>
+</div>

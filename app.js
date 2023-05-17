@@ -22,8 +22,11 @@ app.use("/", indexRoutes)
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes)
 
-const apiRoutes = require("./routes/api.routes")
-app.use("/", apiRoutes)
+const movieRoutes = require("./routes/movie.routes")
+app.use("/", movieRoutes)
+
+const seriesRoutes = require("./routes/series.routes")
+app.use("/", seriesRoutes)
 
 const userRoutes = require("./routes/user.routes");
 app.use("/", userRoutes)
