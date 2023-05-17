@@ -8,8 +8,8 @@ class MoviesApiHandler {
         'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
         'X-RapidAPI-Host': process.env.RAPIDAPI_HOST
       }
-    });
-    this.previousCursors = [];
+    })
+    this.previousCursors = []
   }
 
   createQueryParams(cursor, services, genres, year_min, year_max) {
@@ -50,7 +50,7 @@ class MoviesApiHandler {
         url: streamingInfo[platform][0].link,
       };
     }
-    return streamingData;
+    return streamingData
   }
 
 
@@ -65,12 +65,12 @@ class MoviesApiHandler {
       method: 'GET',
       url: '/search/pro',
       params: this.createQueryParams(cursor)
-    };
+    }
 
     this.axiosApp
       .request(options)
       .then(response => {
-        const movieData = response.data;
+        const movieData = response.data
 
         const movies = movieData.result.map(movie => {
           return {
@@ -88,13 +88,13 @@ class MoviesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: movieData.hasMore,
           nextCursor: movieData.nextCursor
-        });
+        })
 
         console.log(response.data);
       })
       .catch(err => {
-        next(err);
-      });
+        next(err)
+      })
   }
 
   getFilteredMovies(req, res, next) {
@@ -105,24 +105,24 @@ class MoviesApiHandler {
       method: 'GET',
       url: '/search/pro',
       params: this.createQueryParams(cursor, services, genres, year_min, year_max)
-    };
+    }
 
     this.axiosApp
       .request(options)
       .then(response => {
-        const movieData = response.data;
+        const movieData = response.data
 
         const movies = movieData.result.map(movie => {
           return {
             ...movie,
             streamingData: this.processStreamingInfo(movie),
-          };
-        });
+          }
+        })
 
         res.render('api/movie-filter', {
           movie: {
             ...movieData,
-            result: movies,
+            result: movies
           },
           services: services,
           genres: genres,
@@ -135,7 +135,7 @@ class MoviesApiHandler {
         });
       })
       .catch(err => {
-        next(err);
+        next(err)
       });
   }
 
