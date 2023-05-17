@@ -6,16 +6,14 @@
             <ul>
                 {{#each events}}
                 <li><strong>{{this.name}}</strong></li>
-                {{this.description}}
                 {{this.location}}
                 {{this.date}}
+                <a href="/eventos/detalles/{{this._id}}">Ver detalles</a>
                 <a href="/eventos/editar/{{this._id}}">editar evento</a>
                 <form action="/eventos/eliminar/{{this._id}}" method="POST" style="display: inline; "
                     class="btn btn-warning">
                     <input type="submit" value="eliminar">
                 </form>
-
-
                 {{/each}}
             </ul>
             <a href="/eventos/crear"> crear evento</a>

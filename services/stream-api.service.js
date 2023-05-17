@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('axios')
 
 class MoviesApiHandler {
   constructor() {
@@ -144,4 +144,4 @@ class MoviesApiHandler {
 
 
 
-module.exports = MoviesApiHandler;
+module.exports = MoviesApiHandler
