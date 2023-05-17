@@ -3,3 +3,5 @@ me gustaria que movies, series, events saliera a la izquierda y el login se qued
 como solo el admin puede crear eventos, que el boton de crear evento salga en la lista pero con el if isAdmin, y tambien podria salir en el perfil del admin
 
 quiza el admin podria ver una lista de usuarios que puede eliminar si quiere
+
+el editar las cosas con foto se estropea

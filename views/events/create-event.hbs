@@ -2,7 +2,7 @@
     <div class="col-md-8">
         <h2>Añadir evento</h2>
         <hr>
-        <form action="/eventos/crear" method="POST">
+        <form action="/eventos/crear" method="POST" enctype="multipart/form-data">
             <div class="mb-3 mt-5">
                 <label for="eventName" class="form-label">Nombre del evento</label>
                 <input type="text" class="form-control" id="eventName" name="name">
@@ -18,6 +18,10 @@
             <div class="mb-3 mt-5">
                 <label for="eventDate" class="form-label">Fecha</label>
                 <input type="date" class="form-control" id="eventDate" name="date">
+            </div>
+            <div class="mb-3">
+                <label for="imageUrl" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="imageUrl" name="imageUrl" />
             </div>
 
             <button type="submit" class="btn btn-dark">Crear evento</button>
