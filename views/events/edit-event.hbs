@@ -1,33 +1,60 @@
 <div class="container pt-5 mt-5 justify-content-center">
-    <div class="col-md-8">
-        <h2>Editar evento</h2>
-        <hr>
-        <form action="/eventos/editar/{{_id}}" method="POST">
-            <div class="mb-3 mt-5">
-                <label for="eventName" class="form-label">Nombre del evento</label>
-                <input type="text" class="form-control" id="eventName" name="name" value="{{name}}">
-            </div>
-            <div class="mb-3 mt-5">
-                <label for="eventDescription" class="form-label">Descripción</label>
-                <input type="text" class="form-control" id="eventDescription" name="description"
-                    value="{{description}}">
-            </div>
-            <div class="mb-3 mt-5">
-                <label for="eventLocation" class="form-label">Ubicación</label>
-                <input type="text" class="form-control" id="eventLocation" name="location" value="{{location}}">
-            </div>
-            <div class="mb-3 mt-5">
-                <label for="eventDate" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="eventDate" name="date" value="{{date}}">
-            </div>
-            <div class="mb-3">
-                <label for="imageUrl" class="form-label">Imagen</label>
-                <input type="file" class="form-control" id="imageUrl" name="imageUrl" />
-            </div>
+  <div class="col-md-8">
+    <h2>Editar evento</h2>
+    <hr />
+    <form
+      action="/eventos/editar/{{_id}}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3 mt-5">
+        <label for="eventName" class="form-label">Nombre del evento</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eventName"
+          name="name"
+          value="{{name}}"
+        />
+      </div>
+      <div class="mb-3 mt-5">
+        <label for="eventDescription" class="form-label">Descripción</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eventDescription"
+          name="description"
+          value="{{description}}"
+        />
+      </div>
+      <div class="mb-3 mt-5">
+        <label for="eventLocation" class="form-label">Ubicación</label>
+        <input
+          type="text"
+          class="form-control"
+          id="eventLocation"
+          name="location"
+          value="{{location}}"
+        />
+      </div>
+      <div class="mb-3 mt-5">
+        <label for="eventDate" class="form-label">Fecha</label>
+        <input
+          type="date"
+          class="form-control"
+          id="eventDate"
+          name="date"
+          value="{{date}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Imagen</label>
+        <input type="file" class="form-control" id="imageUrl" name="imageUrl" />
+      </div>
 
-            <button type="submit" class="btn btn-dark">Editar evento</button>
+      <button type="submit" class="btn btn-dark">Editar evento</button>
 
-        </form>
+    </form>
 
-    </div>
+  </div>
 </div>

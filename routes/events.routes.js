@@ -25,9 +25,15 @@ router.post("/eventos/crear", uploaderMiddleware.single('imageUrl'), (req, res, 
 // event list
 
 router.get("/eventos/lista", isLoggedIn, (req, res, next) => {
+    const userRole = {
+        isAdmin: req.session.currentUser?.role === 'ADMIN',
+        isUser: req.session.currentUser?.role === 'USER'
+    }
+
     Event
         .find()
-        .then(events => res.render('events/event-list', { events }))
+        .populate("participants")
+        .then(events => res.render('events/event-list', { events, userRole }))
         .catch(err => next(err))
 });
 
@@ -35,6 +41,7 @@ router.get("/eventos/lista", isLoggedIn, (req, res, next) => {
 
 router.get("/eventos/detalles/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     const { event_id } = req.params
+
     Event
         .findById(event_id)
         .then(events => res.render('events/event-details', { events }))
@@ -53,12 +60,16 @@ router.get("/eventos/editar/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, r
 })
 
 router.post("/eventos/editar/:event_id", isLoggedIn, checkRoles('ADMIN'), uploaderMiddleware.single('imageUrl'), (req, res, next) => {
-    const { path: imageUrl } = req.file
+    const imageUrl = req.file ? req.file.path : null; // Si req.file no está presente, imageUrl será null
     const { name, description, location, date } = req.body
     const { event_id } = req.params
+    const updateData = { name, description, location, date };
+    if (imageUrl) {
+        updateData.imageUrl = imageUrl; // Si imageUrl no es null, agrega la propiedad al objeto updateData
+    }
 
     Event
-        .findByIdAndUpdate(event_id, { name, description, location, date, imageUrl })
+        .findByIdAndUpdate(event_id, updateData)
         .then(() => res.redirect('/eventos/lista'))
         .catch(err => next(err))
 })

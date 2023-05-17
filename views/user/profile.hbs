@@ -1,15 +1,20 @@
 <div class="container pt-5 mt-5">
-    <h1>Bienvenid@, {{user.username}}</h1>
-    <hr>
-    <p>Tu email es {{user.email}}</p>
-    <a href="/perfil/editar-perfil/{{user._id}}">Editar perfil</a>
-    <form action="/perfil/eliminar-perfil/{{user._id}}" method="POST" style="display: inline">
-        <input type="submit" value="Eliminar perfil" class="btn btn-sm btn-danger">
-    </form>
-    <img src={{user.avatar}} alt="" style="width: 30%;">
-    <h3>Tus eventos</h3>
-    <ul>
-        <li></li>
-    </ul>
+  <h1>Bienvenid@, {{user.username}}</h1>
+  <hr />
+  <p>Tu email es {{user.email}}</p>
+  <a href="/perfil/editar-perfil/{{user._id}}" class="btn btn-success">Editar
+    perfil</a>
+  <form
+    action="/perfil/eliminar-perfil/{{user._id}}"
+    method="POST"
+    style="display: inline"
+  >
+    <input type="submit" value="Eliminar perfil" class="btn btn-danger" />
+  </form>
+  <img src={{user.avatar}} alt="" class="rounded-circle w-25" />
+  <h3>Tus eventos</h3>
+  <ul>
+    <li></li>
+  </ul>
 
 </div>

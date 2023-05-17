@@ -1,23 +1,54 @@
 <div class="container pt-5 mt-5 justify-content-center">
-    <div class="col-md-8">
-        <h2>Todos los eventos</h2>
-        <hr>
-        <div class="row">
-            <ul>
-                {{#each events}}
-                <li><strong>{{this.name}}</strong></li>
-                {{this.location}}
-                {{this.date}}
-                <a href="/eventos/detalles/{{this._id}}">Ver detalles</a>
-                <a href="/eventos/editar/{{this._id}}">editar evento</a>
-                <form action="/eventos/eliminar/{{this._id}}" method="POST" style="display: inline; "
-                    class="btn btn-warning">
-                    <input type="submit" value="eliminar">
-                </form>
-                {{/each}}
-            </ul>
-            <a href="/eventos/crear"> crear evento</a>
-        </div>
-
+  <div class="row">
+    <div class="col">
+    <h2>Todos los eventos</h2>
+    <hr />
     </div>
+</div>
+    <div class="row">
+      <ul>
+        {{#each events}}
+          <li class="pt-3"><strong>{{this.name}}</strong></li>
+          <p class="mb-0">Lugar : {{this.location}}</p>
+          <p>Fecha: {{this.date}}</p>
+              {{#if ../userRole.isAdmin}}
+          <a href="/eventos/detalles/{{this._id}}" class="btn btn-success">Ver
+            detalles</a>
+            {{/if}}
+
+              {{#if ../userRole.isAdmin}}
+          <a href="/eventos/editar/{{this._id}}" class="btn btn-info">editar
+            evento</a>
+                        {{/if}}
+              {{#if ../userRole.isAdmin}}
+          <form
+            action="/eventos/eliminar/{{this._id}}"
+            method="POST"
+            style="margin-botom:0"
+            class="d-inline"
+          >
+            <input
+              type="submit"
+              value="eliminar"
+              class="btn btn-danger text-white"
+            />
+          </form>
+                                  {{/if}}
+    {{#each participants}}
+        {{this.username}}
+        {{/each}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="row">
+    
+    </div>
+    <div class="row">
+        <div class="col">
+    {{#if userRole.isAdmin}}
+      <a href="/eventos/crear" class="btn btn-warning"> crear evento</a>
+    {{/if}}
+    </div>
+    </div>
+ 
 </div>
