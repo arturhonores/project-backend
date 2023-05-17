@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const MoviesApiHandler = require('../services/stream-api.service');
+const MoviesApiHandler = require('../services/movie-api.service');
 
 const apiHandler = new MoviesApiHandler();
 
