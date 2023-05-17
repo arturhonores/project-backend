@@ -1,1 +1,5 @@
-el error de login no sale
+me gustaria que movies, series, events saliera a la izquierda y el login se quedara a la derecha
+
+como solo el admin puede crear eventos, que el boton de crear evento salga en la lista pero con el if isAdmin, y tambien podria salir en el perfil del admin
+
+quiza el admin podria ver una lista de usuarios que puede eliminar si quiere

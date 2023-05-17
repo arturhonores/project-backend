@@ -1,1 +1,28 @@
-<h1>eeeeeeeeee</h1>
+<div class="container pt-5 mt-5 justify-content-center">
+    <div class="col-md-8">
+        <h2>Añadir evento</h2>
+        <hr>
+        <form action="/eventos/crear" method="POST">
+            <div class="mb-3 mt-5">
+                <label for="eventName" class="form-label">Nombre del evento</label>
+                <input type="text" class="form-control" id="eventName" name="name">
+            </div>
+            <div class="mb-3 mt-5">
+                <label for="eventDescription" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="eventDescription" name="description">
+            </div>
+            <div class="mb-3 mt-5">
+                <label for="eventLocation" class="form-label">Ubicación</label>
+                <input type="text" class="form-control" id="eventLocation" name="location">
+            </div>
+            <div class="mb-3 mt-5">
+                <label for="eventDate" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="eventDate" name="date">
+            </div>
+
+            <button type="submit" class="btn btn-dark">Crear evento</button>
+
+        </form>
+
+    </div>
+</div>
