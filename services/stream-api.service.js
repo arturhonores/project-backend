@@ -55,74 +55,76 @@ class MoviesApiHandler {
 
 
     getMovies(req, res, next) {
-        const cursor = req.query.cursor || '';
+  const cursor = req.query.cursor || '';
 
-        this.updatePreviousCursors(cursor);
+  this.updatePreviousCursors(cursor);
 
-        console.log("Valor actual del cursor:", cursor);
+  console.log("Valor actual del cursor:", cursor);
 
-        const options = {
-            method: 'GET',
-            url: '/search/pro',
-            params: this.createQueryParams(cursor)
+  const options = {
+    method: 'GET',
+    url: '/search/pro',
+    params: this.createQueryParams(cursor)
+  };
+
+  this.axiosApp
+    .request(options)
+    .then(response => {
+      const movieData = response.data;
+
+      const movies = movieData.result.map(movie => {
+        return {
+          ...movie,
+          streamingData: this.processStreamingInfo(movie),
         };
+      });
 
-        this.axiosApp.request(options)
-            .then(response => {
-                const movieData = response.data;
+      res.render('api/new-movie', {
+        movie: {
+          ...movieData,
+          result: movies,
+        },
+        hasPrevious: this.previousCursors.length > 1,
+        previousCursor: this.previousCursors[this.previousCursors.length - 2],
+        hasMore: movieData.hasMore,
+        nextCursor: movieData.nextCursor
+      });
 
-                const movies = response.data.result.map(movie => {
-                    return {
-                        ...movie,
-                        streamingData: this.processStreamingInfo(movie),
-                    };
-                });
+      console.log(response.data);
+    })
+    .catch(err => {
+      next(err);
+    });
+}
 
-                res.render('api/new-movie', {
-                    movie: {
-                        ...movieData,
-                        result: movies,
-                    },
-                    hasPrevious: this.previousCursors.length > 1,
-                    previousCursor: this.previousCursors[this.previousCursors.length - 2],
-                    hasMore: movieData.hasMore,
-                    nextCursor: movieData.nextCursor
-                });
+getFilteredMovies(req, res, next) {
+  const { cursor, services, genres } = req.body;
+  console.log(req.body)
 
-                console.log(response.data);
-            })
-            .catch(err => {
-                next(err);
-            });
-    }
+  const options = {
+    method: 'GET',
+    url: '/search/pro',
+    params: this.createQueryParams(cursor, services, genres)
+  };
 
-    getFilteredMovies(req, res, next) {
-        const { cursor, services, genres } = req.body;
-        console.log(req.body)
+  this.axiosApp
+    .request(options)
+    .then(response => {
+      const movieData = response.data;
 
-        const options = {
-            method: 'GET',
-            url: '/search/pro',
-            params: this.createQueryParams(cursor, services, genres)
-        };
+      res.render('api/movie-filter', {
+        movie: movieData,
+        hasPrevious: this.previousCursors.length > 1,
+        previousCursor: this.previousCursors[this.previousCursors.length - 2],
+        hasMore: movieData.hasMore,
+        nextCursor: movieData.nextCursor
+      });
+    })
+    .catch(err => {
+      next(err);
+    });
+}
 
-        this.axiosApp.request(options)
-            .then(response => {
-                const movieData = response.data;
-
-                res.render('api/movie-filter', {
-                    movie: movieData,
-                    hasPrevious: this.previousCursors.length > 1,
-                    previousCursor: this.previousCursors[this.previousCursors.length - 2],
-                    hasMore: movieData.hasMore,
-                    nextCursor: movieData.nextCursor
-                });
-
-            })
-            .catch(err => {
-                next(err);
-            });
-    }
 
 }
 
