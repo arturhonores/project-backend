@@ -12,7 +12,6 @@ router.get('/peliculas-filtradas', (req, res, next) => {
 });
 
 router.post('/peliculas-filtradas', (req, res, next) => {
-    const apiHandler = new MoviesApiHandler();
     apiHandler.getFilteredMovies(req, res, next);
 });
 
