@@ -17,9 +17,15 @@ router.post('/series-filtradas', (req, res, next) => {
 
 // series details
 
-router.post('/series/:show_id')
+router.post('/series/detalles/:imdbId', (req, res, next) => {
 
-
-
+    const { imdbId } = req.params
+    
+    apiHandler
+    .getSeriesDetails(imdbId)
+    .then(response => { res.render('series/details', {shows: response.data})})
+    .catch(err => next(err))
+    
+})
 
 module.exports = router
