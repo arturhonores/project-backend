@@ -8,8 +8,8 @@ class SeriesApiHandler {
         'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
         'X-RapidAPI-Host': process.env.RAPIDAPI_HOST
       }
-    });
-    this.previousCursors = [];
+    })
+    this.previousCursors = []
   }
 
   createQueryParams(cursor, services, genres, year_min, year_max) {
@@ -26,81 +26,79 @@ class SeriesApiHandler {
       order_by: 'year',
       desc: 'false',
       cursor: cursor
-    };
+    }
   }
 
   updatePreviousCursors(cursor) {
     if (cursor) {
-      const index = this.previousCursors.indexOf(cursor);
+      const index = this.previousCursors.indexOf(cursor)
       if (index !== -1) {
-        this.previousCursors = this.previousCursors.slice(0, index);
+        this.previousCursors = this.previousCursors.slice(0, index)
       } else {
-        this.previousCursors.push(cursor);
+        this.previousCursors.push(cursor)
       }
     }
   }
 
-  //iterar dentro del objeto streamingInfo
   processStreamingInfo(show) {
-    const streamingData = {};
-    const streamingInfo = show.streamingInfo['es'];
+    const streamingData = {}
+    const streamingInfo = show.streamingInfo['es']
 
     for (const platform in streamingInfo) {
       streamingData[platform] = {
         url: streamingInfo[platform][0].link,
-      };
+      }
     }
-    return streamingData;
+    return streamingData
   }
 
-  // getSeriesDetails(seriesId) {
-  //   return this.axiosApp
-  //     .request(options)
-  //     .then(response => {
-  //       const showData = response.data;
+  getSeriesDetails(imdbId) {
+return this.axiosApp.get(`/search/id/${imdbId}`)
+    .then(response => {
+      const showData = response.data;
 
-  //       const shows = showData.result.map(show => {
-  //         return {
-  //           ...show,
-  //           streamingData: this.processStreamingInfo(show),
-  //         };
-  //       });
+      const showDetails = {
+       
+        title: showData.title,
+        cast: showData.cast,
+        firstAirYear: showData.firstAirYear,
+        lastAirYear: showData.lastAirYear,
+        imdbRating: showData.imdbRating,
+        genres: showData.genres,
+        creators: showData.creators,
+        seasonCount: showData.seasonCount,
+        posterPath: showData.posterPath,        
+        streamingData: this.processStreamingInfo(showData)
+      }
 
-  //       res.render('api/new-series', {
-  //         show: {
-  //           ...showData,
-  //           result: shows,
-  //         }})
-
-  //       console.log(response.data)
-  //     })
-  //     .catch(err => {next(err)})
-  // }
+      return showDetails;
+    })
+  }
 
   getSeries(req, res, next) {
-    const cursor = req.query.cursor || '';
+    const cursor = req.query.cursor || ''
 
-    this.updatePreviousCursors(cursor);
+    this.updatePreviousCursors(cursor)
 
-    console.log("Valor actual del cursor:", cursor);
+    console.log("Valor actual del cursor:", cursor)
 
     const options = {
       method: 'GET',
       url: '/search/pro',
       params: this.createQueryParams(cursor)
-    };
+    }
 
     this.axiosApp
       .request(options)
       .then(response => {
-        const showData = response.data;
+        const showData = response.data
 
         const shows = showData.result.map(show => {
           return {
             ...show,
             streamingData: this.processStreamingInfo(show),
-          };
-        });
+          }
+        })
 
         res.render('api/new-series', {
           show: {
@@ -111,34 +109,34 @@ class SeriesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: showData.hasMore,
           nextCursor: showData.nextCursor
-        });
+        })
 
-        console.log(response.data);
+        console.log(response.data)
       })
       .catch(err => {next(err)})
   }
 
   getFilteredSeries(req, res, next) {
-    const { cursor, services, genres, year_min, year_max } = req.body;
+    const { cursor, services, genres, year_min, year_max } = req.body
     console.log(req.body)
 
     const options = {
       method: 'GET',
       url: '/search/pro',
       params: this.createQueryParams(cursor, services, genres, year_min, year_max)
-    };
+    }
 
     this.axiosApp
       .request(options)
       .then(response => {
-        const showData = response.data;
+        const showData = response.data
 
         const shows = showData.result.map(show => {
           return {
             ...show,
             streamingData: this.processStreamingInfo(show),
-          };
-        });
+          }
+        })
 
         res.render('api/series-filter', {
           show: {
@@ -153,7 +151,7 @@ class SeriesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: showData.hasMore,
           nextCursor: showData.nextCursor
-        });
+        })
       })
       .catch(err => {next(err)})
   }
