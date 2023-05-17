@@ -13,6 +13,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">{{title}}</h5>
               <p>IMDB Rating :{{imdbRating}}</p>
+              <p>year : {{year}} </p>
               {{#each streamingData}}
                 {{@key}}
                 <a href="{{this.url}}" class="btn btn-warning" target="_blank">
