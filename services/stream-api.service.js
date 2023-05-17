@@ -72,7 +72,9 @@ class MoviesApiHandler {
     }
 
     async getFilteredMovies(req, res, next) {
+         
         const { country, services, genres } = req.body;
+
 
         try {
             const options = {
