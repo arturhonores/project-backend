@@ -53,6 +53,29 @@ class SeriesApiHandler {
     return streamingData;
   }
 
+  // getSeriesDetails(seriesId) {
+  //   return this.axiosApp
+  //     .request(options)
+  //     .then(response => {
+  //       const showData = response.data;
+
+  //       const shows = showData.result.map(show => {
+  //         return {
+  //           ...show,
+  //           streamingData: this.processStreamingInfo(show),
+  //         };
+  //       });
+
+  //       res.render('api/new-series', {
+  //         show: {
+  //           ...showData,
+  //           result: shows,
+  //         }})
+
+  //       console.log(response.data)
+  //     })
+  //     .catch(err => {next(err)})
+  // }
 
   getSeries(req, res, next) {
     const cursor = req.query.cursor || '';
