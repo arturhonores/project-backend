@@ -1,20 +1,42 @@
-<div class="container pt-5 mt-5">
-  <h1>Bienvenid@, {{user.username}}</h1>
-  <hr />
-  <p>Tu email es {{user.email}}</p>
-  <a href="/perfil/editar-perfil/{{user._id}}" class="btn btn-success">Editar
-    perfil</a>
-  <form
-    action="/perfil/eliminar-perfil/{{user._id}}"
-    method="POST"
-    style="display: inline"
-  >
-    <input type="submit" value="Eliminar perfil" class="btn btn-danger" />
-  </form>
-  <img src={{user.avatar}} alt="" class="rounded-circle w-25" />
-  <h3>Tus eventos</h3>
-  <ul>
-    <li></li>
-  </ul>
-
+<div class="container pt-5 mt-5 text-white">
+  <div class="row">
+    <div class="col">
+      <h2>Bienvenid@, {{user.username}}</h2>
+    </div>
+    <div class="col text-end">
+      <form
+        action="/perfil/eliminar-perfil/{{user._id}}"
+        method="POST"
+        style="display: inline"
+      >
+        <input type="submit" value="Eliminar perfil" class="btn btn-danger" />
+      </form>
+      <a
+        href="/perfil/editar-perfil/{{user._id}}"
+        class="btn btn-success"
+      >Editar perfil</a>
+    </div>
+    <hr />
+  </div>
+  <div class="row">
+    <div class="col col-md-7 mx-auto text-center">
+      <img src={{user.avatar}} alt="" class="rounded-circle w-25" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h5>Información</h5>
+      <p>Email: {{user.email}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h5>Tus eventos</h5>
+      <ul>
+        {{#each events}}
+          <li>{{this.name}}-{{this.location}}-{{this.date}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </div>

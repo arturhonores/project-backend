@@ -1,4 +1,4 @@
-<div class="container pt-5 mt-5 justify-content-center">
+<div class="container pt-5 mt-5 justify-content-center text-white">
   <div class="row">
     <div class="col">
     <h2>Todos los eventos</h2>
@@ -11,10 +11,26 @@
           <li class="pt-3"><strong>{{this.name}}</strong></li>
           <p class="mb-0">Lugar : {{this.location}}</p>
           <p>Fecha: {{this.date}}</p>
-              {{#if ../userRole.isAdmin}}
+          <p>Participantes:</p>
+    
+<div class="container text-center">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      {{#each this.participants}}
+    <div class="col">
+      <div><img src="{{this.avatar}}" alt="" class="rounded-circle avatar-size"></div>
+      <div class="pb-3">{{this.username}}</div>
+    </div>
+     {{/each}}
+  </div>
+</div>
+     
+            <form action="/eventos/inscribirse/{{this._id}}" method="POST" class="d-inline">
+            <input type="submit" value="Inscribirse" class="btn btn-primary" />
+            </form>
+          {{#if ../userRole.isAdmin}}
           <a href="/eventos/detalles/{{this._id}}" class="btn btn-success">Ver
             detalles</a>
-            {{/if}}
+          {{/if}}
 
               {{#if ../userRole.isAdmin}}
           <a href="/eventos/editar/{{this._id}}" class="btn btn-info">editar
@@ -34,9 +50,6 @@
             />
           </form>
                                   {{/if}}
-    {{#each participants}}
-        {{this.username}}
-        {{/each}}
         {{/each}}
       </ul>
     </div>

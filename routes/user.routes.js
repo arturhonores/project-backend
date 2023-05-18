@@ -5,10 +5,17 @@ const uploaderMiddleware = require('../middlewares/uploader.middleware')
 const router = express.Router()
 
 const User = require("../models/User.model")
+const Event = require("../models/Event.model")
 
 // profile page
 router.get("/perfil", isLoggedIn, (req, res, next) => {
-    res.render("user/profile", { user: req.session.currentUser })
+    const user_id = req.session.currentUser._id;
+
+    Event.find({ participants: user_id })
+        .then(events => {
+            res.render("user/profile", { user: req.session.currentUser, events });
+        })
+        .catch(err => next(err));
 })
 
 // edit profile
@@ -43,7 +50,7 @@ router.post('/perfil/eliminar-perfil/:user_id', isLoggedIn, (req, res, next) => 
     User
         .findByIdAndDelete(user_id)
         .then(() => res.redirect("/registro"))
-            .catch(err => console.log(err))
+        .catch(err => console.log(err))
 })
 
 module.exports = router

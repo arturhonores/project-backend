@@ -24,6 +24,10 @@ body {
   background-size: cover;
 }
 
+.avatar-size {
+  width: 50px;
+}
+
 #error {
   background-color: rgb(255, 188, 188);
   padding: 10px;

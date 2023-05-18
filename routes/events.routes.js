@@ -23,7 +23,6 @@ router.post("/eventos/crear", uploaderMiddleware.single('imageUrl'), (req, res, 
 })
 
 // event list
-
 router.get("/eventos/lista", isLoggedIn, (req, res, next) => {
     const userRole = {
         isAdmin: req.session.currentUser?.role === 'ADMIN',
@@ -32,13 +31,12 @@ router.get("/eventos/lista", isLoggedIn, (req, res, next) => {
 
     Event
         .find()
-        .populate("participants")
+        .populate('participants')
         .then(events => res.render('events/event-list', { events, userRole }))
         .catch(err => next(err))
 });
 
 // event details
-
 router.get("/eventos/detalles/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     const { event_id } = req.params
 
@@ -49,7 +47,6 @@ router.get("/eventos/detalles/:event_id", isLoggedIn, checkRoles('ADMIN'), (req,
 })
 
 // edit event
-
 router.get("/eventos/editar/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     const { event_id } = req.params
 
@@ -76,7 +73,6 @@ router.post("/eventos/editar/:event_id", isLoggedIn, checkRoles('ADMIN'), upload
 
 
 // delete event
-
 router.post("/eventos/eliminar/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     const { event_id } = req.params
 
@@ -86,28 +82,25 @@ router.post("/eventos/eliminar/:event_id", isLoggedIn, checkRoles('ADMIN'), (req
         .catch(err => next(err))
 })
 
+//register to an event
+router.post("/eventos/inscribirse/:event_id", isLoggedIn, (req, res, next) => {
+    const { event_id } = req.params;
+    const user_id = req.session.currentUser._id;
 
-// // attend to event
-// router.post("/event-attend/:user_id", isLoggedIn, (req, res, next) => {
+    Event.findByIdAndUpdate(event_id, { $addToSet: { participants: user_id } })
+        .then(() => res.redirect("/eventos/lista"))
+        .catch(err => next(err));
+});
 
-//     const { user_id } = req.params
-//     User
-//     .findByIdAndUpdate( user_id, {role: 'DEV'} )
-//     .then(() => res.redirect(`/student-profile/${user_id}`))
-//     .catch(err => console.log(err))
+//unsubscribe from an event
+router.post("/eventos/desinscribirse/:event_id", isLoggedIn, (req, res, next) => {
+    const { event_id } = req.params;
+    const user_id = req.session.currentUser._id;
 
-// })
-
-
-
-
-
-
-
-
-
-
-
+    Event.findByIdAndDelete(event_id, { $addToSet: { participants: user_id } })
+        .then(() => res.redirect("/perfil"))
+        .catch(err => next(err));
+});
 
 
 
