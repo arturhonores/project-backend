@@ -54,12 +54,9 @@ class MoviesApiHandler {
   }
 
 
-  getMovies(req, res, next) {
+  getMovies(req) {
     const cursor = req.query.cursor || '';
-
     this.updatePreviousCursors(cursor);
-
-   
 
     const options = {
       method: 'GET',
@@ -67,7 +64,7 @@ class MoviesApiHandler {
       params: this.createQueryParams(cursor)
     }
 
-    this.axiosApp
+    return this.axiosApp
       .request(options)
       .then(response => {
         const movieData = response.data
@@ -79,7 +76,7 @@ class MoviesApiHandler {
           };
         });
 
-        res.render('api/new-movie', {
+        return {
           movie: {
             ...movieData,
             result: movies,
@@ -88,18 +85,12 @@ class MoviesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: movieData.hasMore,
           nextCursor: movieData.nextCursor
-        })
-
-
-      })
-      .catch(err => {
-        next(err)
+        }
       })
   }
 
-  getFilteredMovies(req, res, next) {
+  getFilteredMovies(req) {
     const { cursor, services, genres, year_min, year_max } = req.body;
-
 
     const options = {
       method: 'GET',
@@ -107,7 +98,7 @@ class MoviesApiHandler {
       params: this.createQueryParams(cursor, services, genres, year_min, year_max)
     }
 
-    this.axiosApp
+    return this.axiosApp
       .request(options)
       .then(response => {
         const movieData = response.data
@@ -119,7 +110,7 @@ class MoviesApiHandler {
           }
         })
 
-        res.render('api/movie-filter', {
+        return {
           movie: {
             ...movieData,
             result: movies
@@ -132,11 +123,8 @@ class MoviesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: movieData.hasMore,
           nextCursor: movieData.nextCursor
-        });
+        };
       })
-      .catch(err => {
-        next(err)
-      });
   }
 
 
