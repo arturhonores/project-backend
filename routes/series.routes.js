@@ -18,11 +18,6 @@ router.post('/series-filtradas', (req, res, next) => {
 
 // series details
 
-// router.get('/series/detalles/:imdb_id', (req, res, next) => {
-//   apiHandler.getSeriesDetails(req, res, next)
-// })
-
-
 router.get('/series/detalles/:imdbId', (req, res, next) => {
   const imdbId = req.params.imdbId
 
