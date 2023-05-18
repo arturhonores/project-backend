@@ -11,13 +11,14 @@
                         <p>IMDB Rating :{{imdbRating}}</p>
                         <p>Release year: {{firstAirYear}} </p>
                         {{#each streamingData}}
-                        {{@key}}
-                        <a href="{{this.url}}" class="btn btn-warning" target="_blank">
+                        <p>{{@key}}</p>
+
+                        {{!-- <a href="{{this.url}}" class="btn btn-warning" target="_blank">
                             Watch on
                             {{@key}}
-                        </a>
+                        </a> --}}
                         {{/each}}
-                        <a href="">Ver detalles</a>
+                        <a href="/series/detalles/{{imdbId}}" class="btn btn-warning">Ver detalles</a>
                     </div>
                 </div>
             </div>
@@ -25,12 +26,11 @@
         </div>
         <div class="row">
             <div class="col text-center p-4">
-                {{!-- {{#if hasPrevious}} --}}
+
                 <a href="/series-new?cursor={{previousCursor}}" class="btn btn-warning text-white">Previous</a>
-                {{!-- {{/if}} --}}
-                {{!-- {{#if hasMore}} --}}
+
                 <a href="/series-new?cursor={{nextCursor}}" class="btn btn-warning text-white">Next</a>
-                {{!-- {{/if}} --}}
+
             </div>
         </div>
     </div>
