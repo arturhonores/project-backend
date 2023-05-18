@@ -1,60 +1,50 @@
 <div class="container pt-5 mt-5 justify-content-center text-white">
   <div class="row">
     <div class="col">
-      <h2>Todos los eventos</h2>
+      <h2>All the events</h2>
       <hr />
     </div>
-</div>
-    <div class="row">
-      <ul>
-        {{#each events}}
-          <li class="pt-3"><strong>{{this.name}}</strong></li>
-          <p class="mb-0">Lugar : {{this.location}}</p>
-          <p>Fecha: {{this.date}}</p>
-          <p>Participantes:</p>
-    
-              <div class="d-flex gap-2">
-                  {{#each this.participants}}
-                <div class="text-center">
-                  <div><img src="{{this.avatar}}" alt="" class="rounded-circle avatar-size"></div>
-                  <div class="pb-3">{{this.username}}</div>
-                </div>
-                {{/each}}
-              </div>     
-            <form action="/eventos/inscribirse/{{this._id}}" method="POST" class="d-inline">
-            <input type="submit" value="Inscribirse" class="btn btn-info" />
-            </form>
-          <a href="/eventos/detalles/{{this._id}}" class="btn btn-success">Ver
-            detalles</a>
+  </div>
+  <div class="row">
+    <ul>
+      {{#each events}}
+      <li class="pt-3"><strong>{{this.name}}</strong></li>
+      <p class="mb-0">Location: {{this.location}}</p>
+      <p>Date: {{this.date}}</p>
+      <p>Participants:</p>
 
-              {{#if ../userRole.isAdmin}}
-          <a href="/eventos/editar/{{this._id}}" class="btn btn-info">editar
-            evento</a>
-                        {{/if}}
-              {{#if ../userRole.isAdmin}}
-                <form
-                  action="/eventos/eliminar/{{this._id}}"
-                  method="POST"
-                  style="margin-botom:0"
-                  class="d-inline"
-                >
-                  <input
-                    type="submit"
-                    value="eliminar"
-                    class="btn btn-danger text-white"
-                  />
-                </form>
-             {{/if}}
+      <div class="d-flex gap-2">
+        {{#each this.participants}}
+        <div class="text-center">
+          <div><img src="{{this.avatar}}" alt="" class="rounded-circle avatar-size"></div>
+          <div class="pb-3">{{this.username}}</div>
+        </div>
         {{/each}}
-      </ul>
-    </div>
-    <div class="row">
-    
-    </div>
-    <div class="row">
-        <div class="col">
-    {{#if userRole.isAdmin}}
-      <a href="/eventos/crear" class="btn btn-warning"> crear evento</a>
+      </div>
+      <form action="/eventos/inscribirse/{{this._id}}" method="POST" class="d-inline">
+        <input type="submit" value="Join" class="btn blue-bt" />
+      </form>
+      <a href="/eventos/detalles/{{this._id}}" class="btn green-bt">See details</a>
+
+      {{#if ../userRole.isAdmin}}
+      <a href="/eventos/editar/{{this._id}}" class="btn blue-bt">Edit
+        event</a>
+      {{/if}}
+      {{#if ../userRole.isAdmin}}
+      <form action="/eventos/eliminar/{{this._id}}" method="POST" style="margin-botom:0" class="d-inline">
+        <input type="submit" value="Delete" class="btn red-bt text-white" />
+      </form>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div class="col">
+      {{#if userRole.isAdmin}}
+      <a href="/eventos/crear" class="btn btn-warning">Create event</a>
       {{/if}}
     </div>
   </div>

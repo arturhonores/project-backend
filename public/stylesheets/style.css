@@ -38,6 +38,10 @@ body {
   background-color: #4285F4;
 }
 
+.red-bt {
+  background-color: #DB4437;
+}
+
 .fondo-login {
   background-image: url("../images/image-login.jpg");
   background-size: cover;

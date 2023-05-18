@@ -5,9 +5,9 @@
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
             {{#each show.result}}
             <div class="col">
-                <div class="card">
+                <div class="card h-100">
                     <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
-                    <div class="card-body text-center">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
                         <h5 class="card-title">{{title}}</h5>
                         <p>Seasons: {{seasonCount}}</p>
 

@@ -1,49 +1,34 @@
 <div class="container pt-5 mt-3 justify-content-center text-white">
   <div class="row">
     <div class="col">
-      <h2>Añadir evento</h2>
+      <h2>Create event</h2>
       <hr />
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto pb-5">
       <form action="/eventos/crear" method="POST" enctype="multipart/form-data">
-        <div class="mb-3 mt-5">
+        <div class="mb-4">
           <label for="eventName" class="form-label">Nombre del evento</label>
           <input type="text" class="form-control" id="eventName" name="name" />
         </div>
-        <div class="mb-3 mt-5">
+        <div class="mb-4">
           <label for="eventDescription" class="form-label">Descripción</label>
-          <input
-            type="text"
-            class="form-control"
-            id="eventDescription"
-            name="description"
-          />
+          <input type="text" class="form-control" id="eventDescription" name="description" />
         </div>
-        <div class="mb-3 mt-5">
+        <div class="mb-4">
           <label for="eventLocation" class="form-label">Ubicación</label>
-          <input
-            type="text"
-            class="form-control"
-            id="eventLocation"
-            name="location"
-          />
+          <input type="text" class="form-control" id="eventLocation" name="location" />
         </div>
-        <div class="mb-3 mt-5">
+        <div class="mb-4">
           <label for="eventDate" class="form-label">Fecha</label>
           <input type="date" class="form-control" id="eventDate" name="date" />
         </div>
         <div class="mb-3">
           <label for="imageUrl" class="form-label">Imagen</label>
-          <input
-            type="file"
-            class="form-control"
-            id="imageUrl"
-            name="imageUrl"
-          />
+          <input type="file" class="form-control" id="imageUrl" name="imageUrl" />
         </div>
-        <button type="submit" class="btn btn-warning">Crear evento</button>
+        <button type="submit" class="btn blue-bt">Crear evento</button>
       </form>
     </div>
   </div>

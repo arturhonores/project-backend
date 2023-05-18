@@ -17,29 +17,13 @@
                             {{#each movie.genres}}
                             <span class="card-text">{{name}} | </span>
                             {{/each}}
-
-
                             <p class="card-text"> <i class="fas fa-star" style="color: #F4B400;"></i>
                                 {{movie.imdbRating}}/100
                             </p>
-                            {{#each streamingInfo.[platform].[0]}}
-
-
-                            <a href="{{link}}" class="btn btn-warning" target="_blank">
-                                Watch on
-
-                            </a>
-                            {{/each}}
-
-                            {{!-- <form action="/" method="POST" class="d-inline">
-                                <input type="submit" value="fav" class="btn btn-primary" />
-                            </form> --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
