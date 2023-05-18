@@ -36,7 +36,7 @@ router.get("/eventos/lista", isLoggedIn, (req, res, next) => {
 });
 
 // event details
-router.get("/eventos/detalles/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
+router.get("/eventos/detalles/:event_id", isLoggedIn, checkRoles('ADMIN', 'USER'), (req, res, next) => {
     const { event_id } = req.params
 
     Event

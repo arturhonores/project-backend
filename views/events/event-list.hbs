@@ -13,24 +13,19 @@
           <p>Fecha: {{this.date}}</p>
           <p>Participantes:</p>
     
-            <div class="container text-center">
-              <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+              <div class="d-flex gap-2">
                   {{#each this.participants}}
-                <div class="col">
+                <div class="text-center">
                   <div><img src="{{this.avatar}}" alt="" class="rounded-circle avatar-size"></div>
                   <div class="pb-3">{{this.username}}</div>
                 </div>
                 {{/each}}
-              </div>
-            </div>
-     
+              </div>     
             <form action="/eventos/inscribirse/{{this._id}}" method="POST" class="d-inline">
-            <input type="submit" value="Inscribirse" class="btn btn-primary" />
+            <input type="submit" value="Inscribirse" class="btn btn-info" />
             </form>
-          {{#if ../userRole.isAdmin}}
           <a href="/eventos/detalles/{{this._id}}" class="btn btn-success">Ver
             detalles</a>
-          {{/if}}
 
               {{#if ../userRole.isAdmin}}
           <a href="/eventos/editar/{{this._id}}" class="btn btn-info">editar

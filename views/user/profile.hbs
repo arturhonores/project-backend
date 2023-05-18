@@ -1,7 +1,7 @@
 <div class="container pt-5 mt-5 text-white">
   <div class="row">
     <div class="col">
-      <h2>Bienvenid@, {{user.username}}</h2>
+      <h2>Welcome, {{user.username}}</h2>
     </div>
     <div class="col text-end">
       <form
@@ -31,10 +31,12 @@
   </div>
   <div class="row">
     <div class="col">
-      <h5>Tus eventos</h5>
-      <ul>
-        {{#each events}}
-          <li>{{this.name}}-{{this.location}}-{{this.date}}</li>
+      <h5 class="pb-2">Tus eventos</h5>
+      {{#each events}}
+        <div class="mb-4">
+          <h6 class=""><i class="bi bi-calendar-event"></i> {{this.name}}</h6>
+          <p class="mb-2">Lugar: {{this.location}}</p>
+          <p>Fecha y Hora: {{this.date}}</p>
           <form
             action="/eventos/desinscribirse/{{this._id}}"
             method="POST"
@@ -43,12 +45,12 @@
           >
             <input
               type="submit"
-              value="desuscribirme"
+              value="unsubscribe"
               class="btn btn-danger text-white"
             />
           </form>
-        {{/each}}
-      </ul>
+        </div>
+      {{/each}}
     </div>
   </div>
 </div>

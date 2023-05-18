@@ -1,26 +1,12 @@
 <div class="container pt-5 mt-5 text-white">
-
-  <h1>{{events.name}}</h1>
-
-  <img src={{events.imageUrl}} alt="..." class="w-25" />
-  <h5 class="card-title">{{events.description}}</h5>
-  <p class="card-text">{{events.date}}</p>
-
-  <form
-    action="/event-attend/{{user._id}}"
-    method="POST"
-    style="display: inline"
-  >
-    <input type="submit" value="attend" class="btn btn-warning" />
-  </form>
-  {{!-- <p class="card-text">{{attendees}}</p> --}}
-
-  {{!-- {{#each cast}}
-    <ul>
-        <li>{{name}}</li>
-        <li>{{occupation}}</li>
-        <li>{{catchPhrase}}</li>
-
-    </ul>
-    {{/each}} --}}
+  <div class="row">
+    <div class="col-md-7 mx-auto">
+      <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+        <h3 class="text-center">{{events.name}}</h3>
+        <img src={{events.imageUrl}} alt="..." class="w-25" />
+        <p class="card-title">{{events.description}}</p>
+        <p class="card-text">{{events.date}}</p>
+      </div>
+    </div>
+  </div>
 </div>

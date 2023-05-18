@@ -30,13 +30,16 @@ router.get("/perfil/editar-perfil/:user_id", isLoggedIn, (req, res, next) => {
 })
 
 router.post("/perfil/editar-perfil/:user_id", uploaderMiddleware.single('avatar'), isLoggedIn, (req, res, next) => {
-
-    const { path: avatar } = req.file
+    const imageUrl = req.file ? req.file.path : null; // Si req.file no está presente, imageUrl será null
     const { username, email } = req.body
     const { user_id } = req.params
+    const updateData = { username, email };
+    if (imageUrl) {
+        updateData.imageUrl = imageUrl; // Si imageUrl no es null, agrega la propiedad al objeto updateData
+    }
 
     User
-        .findByIdAndUpdate(user_id, { username, email, avatar })
+        .findByIdAndUpdate(user_id, updateData)
         .then(() => res.redirect("/perfil"))
         .catch(err => next(err))
 })

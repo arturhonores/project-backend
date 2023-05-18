@@ -86,32 +86,32 @@ class SeriesApiHandler {
           nextCursor: showData.nextCursor
         })
 
-   
+
       })
-      .catch(err => {next(err)})
+      .catch(err => { next(err) })
   }
 
 
-getSeriesDetails(imdbId) {
-  const options = {
-    method: 'GET',
-    url: '/get/basic',
-    params: {
-      imdb_id: imdbId,
-      country: 'es',
+  getSeriesDetails(imdbId) {
+    const options = {
+      method: 'GET',
+      url: '/get/basic',
+      params: {
+        imdb_id: imdbId,
+        country: 'es',
+      }
     }
-  }
 
-  return this.axiosApp
-    .request(options)
+    return this.axiosApp
+      .request(options)
       .then(response => response.data)
-    .catch(err => console.error(err))
-}
+      .catch(err => console.error(err))
+  }
 
 
   getFilteredSeries(req, res, next) {
     const { cursor, services, genres, year_min, year_max } = req.body
-   
+
     const options = {
       method: 'GET',
       url: '/search/pro',
@@ -145,7 +145,7 @@ getSeriesDetails(imdbId) {
           nextCursor: showData.nextCursor
         })
       })
-      .catch(err => {next(err)})
+      .catch(err => { next(err) })
   }
 
 }
