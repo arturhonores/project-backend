@@ -1,5 +1,26 @@
-<div class="container text-white ">
-    <h1 class="pt-5 mt-5">Hola</h1>
-    <p>{{series.title}}</p>
+<div class="container text-white pt-5 mt-5">
+
+    <div class="card mb-3" style="max-width: 90%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src={{series.posterURLs.original}} class="img-fluid rounded-start" alt="{{series.title}}">
+            </div>
+            <div class="col-md-8 text-dark">
+                <div class="card-body">
+                    <h2 class="card-title">{{series.title}}</h2>
+                    <h6 class="card-text">Created by {{series.creators}}</h6>
+                    <p class="card-text">{{series.overview}}</p>
+                    <h5>Cast</h5>
+                    <p class="card-text">{{series.cast}}</p>
+                    <h5>Genres</h5>
+                    <p class="card-text">{{series.genres}}</p>
+                    <h5>Seasons</h5>
+                    <p class="card-text">{{series.seasonCount}} | {{series.status.statusText}}</p>
+
+                    <p class="card-text">{{series.imdbRating}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

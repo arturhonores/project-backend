@@ -57,8 +57,6 @@ class SeriesApiHandler {
 
     this.updatePreviousCursors(cursor)
 
-
-
     const options = {
       method: 'GET',
       url: '/search/pro',
@@ -93,44 +91,6 @@ class SeriesApiHandler {
       .catch(err => {next(err)})
   }
 
-// getSeriesDetails(req, res, next) {
-//   const { country, services } = req.params
-//   const imdb_id = imdb_id
-
-//   const options = {
-//     method: 'GET',
-//     url: '/get/basic',
-//     params: {
-//       imdb_id: imdb_id,
-//       country: country || 'es',
-//       services: services || 'prime.subscription,netflix,disney,hbo'
-//     }
-//   }
-
-//   this.axiosApp
-//     .request(options)
-//     .then(response => {
-//       const showData = response.data
-
-//       const showDetails = {
-//         title: showData.title,
-//         cast: showData.cast,
-//         firstAirYear: showData.firstAirYear,
-//         lastAirYear: showData.lastAirYear,
-//         imdbRating: showData.imdbRating,
-//         imdb_id: imdb_id,
-//         genres: showData.genres,
-//         creators: showData.creators,
-//         seasonCount: showData.seasonCount,
-//         posterPath: showData.posterPath,
-//         streamingData: apiHandler.processStreamingInfo(showData)
-//       };
-
-//       res.render("api/series-details", { show: showDetails })
-//     })
-//     .catch(err => next(err))
-  
-// }
 
 getSeriesDetails(imdbId) {
   const options = {
@@ -152,7 +112,6 @@ getSeriesDetails(imdbId) {
   getFilteredSeries(req, res, next) {
     const { cursor, services, genres, year_min, year_max } = req.body
    
-
     const options = {
       method: 'GET',
       url: '/search/pro',
