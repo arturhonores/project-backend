@@ -1,4 +1,6 @@
 <div class="bg-dark vh-100 pt-5">
+    <h1 class="text-white text-center pt-5">Buscador de series</h1>
+    <hr>
     <div class="container pt-5">
         <form class="row gy-2 gx-3 align-items-center text-white" action="/series-filtradas" method="POST">
             <div class="col-auto">
@@ -135,7 +137,7 @@
             </div>
         </form>
         <div class="container pt-2 h-auto">
-            <h1 class="text-white text-center pt-5">Buscador de series</h1>
+
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
                 {{#each show.result}}
                 <div class="col">
@@ -146,12 +148,13 @@
                             <p>IMDB Rating :{{imdbRating}}</p>
                             <p>Release year: {{firstAirYear}} </p>
                             {{#each streamingData}}
-                            {{@key}}
-                            <a href="{{this.url}}" class="btn btn-warning" target="_blank">
+                            <p>{{@key}}</p>
+                            {{!-- <a href="{{this.url}}" class="btn btn-warning" target="_blank">
                                 Watch on
-                                {{@key}}
+                                {{@key}} --}}
                             </a>
                             {{/each}}
+                            <a href="/series/detalles/{{imdbId}}" class="btn btn-warning">Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -177,5 +180,35 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+            {{#each show.result}}
+            <div class="col">
+                <div class="card">
+                    <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p>IMDB Rating :{{imdbRating}}</p>
+                        <p>Release year: {{firstAirYear}} </p>
+                        {{#each streamingData}}
+                        <p>{{@key}}</p>
+
+                        {{!-- <a href="{{this.url}}" class="btn btn-warning" target="_blank">
+                            Watch on
+                            {{@key}}
+                        </a> --}}
+                        {{/each}}
+                        <a href="/series/detalles/{{imdbId}}" class="btn btn-warning">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+
+
+
+
     </div>
 </div>

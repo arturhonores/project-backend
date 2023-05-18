@@ -56,12 +56,12 @@ router.get("/eventos/editar/:event_id", isLoggedIn, checkRoles('ADMIN'), (req, r
 })
 
 router.post("/eventos/editar/:event_id", isLoggedIn, checkRoles('ADMIN'), uploaderMiddleware.single('imageUrl'), (req, res, next) => {
-    const imageUrl = req.file ? req.file.path : null; // Si req.file no está presente, imageUrl será null
+    const imageUrl = req.file ? req.file.path : null
     const { name, description, location, date } = req.body
     const { event_id } = req.params
-    const updateData = { name, description, location, date };
+    const updateData = { name, description, location, date }
     if (imageUrl) {
-        updateData.imageUrl = imageUrl; // Si imageUrl no es null, agrega la propiedad al objeto updateData
+        updateData.imageUrl = imageUrl
     }
 
     Event
@@ -84,11 +84,11 @@ router.post("/eventos/eliminar/:event_id", isLoggedIn, checkRoles('ADMIN'), (req
 //register to an event
 router.post("/eventos/inscribirse/:event_id", isLoggedIn, (req, res, next) => {
     const { event_id } = req.params;
-    const user_id = req.session.currentUser._id;
+    const user_id = req.session.currentUser._id
 
     Event.findByIdAndUpdate(event_id, { $addToSet: { participants: user_id } })
         .then(() => res.redirect("/eventos/lista"))
-        .catch(err => next(err));
+        .catch(err => next(err))
 });
 
 // unsubscribe from an event

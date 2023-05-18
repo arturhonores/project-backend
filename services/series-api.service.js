@@ -54,7 +54,6 @@ class SeriesApiHandler {
 
   getSeries(req, res, next) {
     const cursor = req.query.cursor || ''
-
     this.updatePreviousCursors(cursor)
 
     const options = {
@@ -63,7 +62,7 @@ class SeriesApiHandler {
       params: this.createQueryParams(cursor)
     }
 
-    this.axiosApp
+    return this.axiosApp
       .request(options)
       .then(response => {
         const showData = response.data
@@ -74,8 +73,7 @@ class SeriesApiHandler {
             streamingData: this.processStreamingInfo(show),
           }
         })
-
-        res.render('api/new-series', {
+        return {
           show: {
             ...showData,
             result: shows,
@@ -84,11 +82,8 @@ class SeriesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: showData.hasMore,
           nextCursor: showData.nextCursor
-        })
-
-
+        }
       })
-      .catch(err => { next(err) })
   }
 
 
@@ -109,7 +104,7 @@ class SeriesApiHandler {
   }
 
 
-  getFilteredSeries(req, res, next) {
+  getFilteredSeries(req) {
     const { cursor, services, genres, year_min, year_max } = req.body
 
     const options = {
@@ -118,7 +113,7 @@ class SeriesApiHandler {
       params: this.createQueryParams(cursor, services, genres, year_min, year_max)
     }
 
-    this.axiosApp
+    return this.axiosApp
       .request(options)
       .then(response => {
         const showData = response.data
@@ -130,7 +125,7 @@ class SeriesApiHandler {
           }
         })
 
-        res.render('api/series-filter', {
+        return {
           show: {
             ...showData,
             result: shows,
@@ -143,11 +138,9 @@ class SeriesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: showData.hasMore,
           nextCursor: showData.nextCursor
-        })
+        }
       })
-      .catch(err => { next(err) })
   }
-
 }
 
 module.exports = SeriesApiHandler

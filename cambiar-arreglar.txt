@@ -1,7 +1,8 @@
 me gustaria que movies, series, events saliera a la izquierda y el login se quedara a la derecha
 
-como solo el admin puede crear eventos, que el boton de crear evento salga en la lista pero con el if isAdmin, y tambien podria salir en el perfil del admin
+por que no funciona la ruta de streamingInfo en los detalles??
 
-quiza el admin podria ver una lista de usuarios que puede eliminar si quiere
+como quitar la | del final de los generos?
 
-el editar las cosas con foto se estropea
+como dividir entre 10 la nota final?
+
