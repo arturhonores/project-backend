@@ -13,19 +13,35 @@ router.get('/series-filtradas', (req, res, next) => {
 
 router.post('/series-filtradas', (req, res, next) => {
     apiHandler.getFilteredSeries(req, res, next)
+    
 })
 
 // series details
 
-router.post('/series/detalles/:imdbId', (req, res, next) => {
+// router.get('/series/detalles/:imdbId', (req, res, next) => {
+//   const { imdb_id } = req.params;
+//   const country = req.query.country;
 
-    const { imdbId } = req.params
-    
-    apiHandler
-    .getSeriesDetails(imdbId)
-    .then(response => { res.render('series/details', {shows: response.data})})
-    .catch(err => next(err))
-    
-})
+//   apiHandler.getSeriesDetails(imdb_id, country)
+//     .then(response => {
+//       const showData = response.data
+
+//       const showDetails = {
+//         title: showData.title,
+//         cast: showData.cast,
+//         firstAirYear: showData.firstAirYear,
+//         lastAirYear: showData.lastAirYear,
+//         imdbRating: showData.imdbRating,
+//         genres: showData.genres,
+//         creators: showData.creators,
+//         seasonCount: showData.seasonCount,
+//         posterPath: showData.posterPath,
+//         streamingData: apiHandler.processStreamingInfo(showData)
+//       }
+
+//       res.render("api/series-details", { show: showDetails })
+//     })
+//     .catch(err => next(err))
+// })
 
 module.exports = router
