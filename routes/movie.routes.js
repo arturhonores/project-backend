@@ -1,8 +1,8 @@
 
 const router = require("express").Router()
-const { findByIdAndUpdate } = require("../models/User.model")
+const User = require("../models/User.model")
 const MoviesApiHandler = require('../services/movie-api.service')
-// modelo user
+
 const apiHandler = new MoviesApiHandler()
 
 // all
@@ -39,13 +39,6 @@ router.post('/peliculas-filtradas', (req, res, next) => {
         })
         .catch(next)
 })
-
-// fav
-// router.post('/', (req, res, next) => {
-//     req.session id usuario
-//     findByIdAndUpdate - agarrar id y $push fav
-//     redirect a donde estoy
-// })
 
 module.exports = router
 

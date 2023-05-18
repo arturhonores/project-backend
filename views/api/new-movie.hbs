@@ -8,16 +8,16 @@
           <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
           <div class="card-body text-center">
             <h5 class="card-title">{{title}}</h5>
-            <p>IMDB Rating :{{imdbRating}}</p>
-            <p>year : {{year}} </p>
+            <p>{{year}}</p>
+
+            <a href="/peliculas/detalles/{{imdbId}}" class="btn yellow-bt">Ver detalles</a>
             {{#each streamingData}}
-            <p>{{@key}}</p>
-            {{!-- <a href="{{this.url}}" class="btn btn-warning" target="_blank">
+
+            <a href="{{this.url}}" class="btn btn-outline-secondary mt-2 text-dark" target="_blank">
               Watch on
-              {{@key}} --}}
+              {{@key}}
             </a>
             {{/each}}
-            <a href="/peliculas/detalles/{{imdbId}}" class="btn btn-warning">Ver detalles</a>
           </div>
         </div>
       </div>
@@ -26,10 +26,10 @@
     <div class="row">
       <div class="col text-center p-4">
         {{!-- {{#if hasPrevious}} --}}
-        <a href="/peliculas-new?cursor={{previousCursor}}" class="btn btn-warning text-white">Previous</a>
+        <a href="/peliculas-new?cursor={{previousCursor}}" class="btn yellow-bt text-white">Previous</a>
         {{!-- {{/if}} --}}
         {{!-- {{#if hasMore}} --}}
-        <a href="/peliculas-new?cursor={{nextCursor}}" class="btn btn-warning text-white">Next</a>
+        <a href="/peliculas-new?cursor={{nextCursor}}" class="btn yellow-bt text-white">Next</a>
         {{!-- {{/if}} --}}
       </div>
     </div>
