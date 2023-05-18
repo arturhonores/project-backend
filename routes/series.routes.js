@@ -18,30 +18,21 @@ router.post('/series-filtradas', (req, res, next) => {
 
 // series details
 
-// router.get('/series/detalles/:imdbId', (req, res, next) => {
-//   const { imdb_id } = req.params;
-//   const country = req.query.country;
-
-//   apiHandler.getSeriesDetails(imdb_id, country)
-//     .then(response => {
-//       const showData = response.data
-
-//       const showDetails = {
-//         title: showData.title,
-//         cast: showData.cast,
-//         firstAirYear: showData.firstAirYear,
-//         lastAirYear: showData.lastAirYear,
-//         imdbRating: showData.imdbRating,
-//         genres: showData.genres,
-//         creators: showData.creators,
-//         seasonCount: showData.seasonCount,
-//         posterPath: showData.posterPath,
-//         streamingData: apiHandler.processStreamingInfo(showData)
-//       }
-
-//       res.render("api/series-details", { show: showDetails })
-//     })
-//     .catch(err => next(err))
+// router.get('/series/detalles/:imdb_id', (req, res, next) => {
+//   apiHandler.getSeriesDetails(req, res, next)
 // })
+
+
+router.get('/series/detalles/:imdbId', (req, res, next) => {
+  const imdbId = req.params.imdbId
+
+  apiHandler.getSeriesDetails(imdbId)
+    .then(seriesDetails => {
+      console.log(seriesDetails)
+      res.render('api/series-details', { series: seriesDetails.result })
+    })
+    .catch(err => {next(err)})
+})
+
 
 module.exports = router

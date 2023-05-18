@@ -12,7 +12,7 @@ class SeriesApiHandler {
     this.previousCursors = []
   }
 
-  createQueryParams(cursor, services, genres, year_min, year_max) {
+  createQueryParams(cursor, services, genres, year_min, year_max, imdb_id) {
     return {
       country: 'es',
       services: services || 'prime.subscription,netflix,disney,hbo',
@@ -52,24 +52,12 @@ class SeriesApiHandler {
     return streamingData
   }
 
-// getSeriesDetails(imdb_id, country) {
-//   const queryParams = {
-//     country: country || 'es',
-//     id: imdb_id 
-//   }
-//   return this.axiosApp.get(`/get/basic`,  { params: queryParams });
-// }
-
-
-
-
-
   getSeries(req, res, next) {
     const cursor = req.query.cursor || ''
 
     this.updatePreviousCursors(cursor)
 
-    console.log("Valor actual del cursor:", cursor)
+
 
     const options = {
       method: 'GET',
@@ -100,14 +88,70 @@ class SeriesApiHandler {
           nextCursor: showData.nextCursor
         })
 
-        console.log(response.data)
+   
       })
       .catch(err => {next(err)})
   }
 
+// getSeriesDetails(req, res, next) {
+//   const { country, services } = req.params
+//   const imdb_id = imdb_id
+
+//   const options = {
+//     method: 'GET',
+//     url: '/get/basic',
+//     params: {
+//       imdb_id: imdb_id,
+//       country: country || 'es',
+//       services: services || 'prime.subscription,netflix,disney,hbo'
+//     }
+//   }
+
+//   this.axiosApp
+//     .request(options)
+//     .then(response => {
+//       const showData = response.data
+
+//       const showDetails = {
+//         title: showData.title,
+//         cast: showData.cast,
+//         firstAirYear: showData.firstAirYear,
+//         lastAirYear: showData.lastAirYear,
+//         imdbRating: showData.imdbRating,
+//         imdb_id: imdb_id,
+//         genres: showData.genres,
+//         creators: showData.creators,
+//         seasonCount: showData.seasonCount,
+//         posterPath: showData.posterPath,
+//         streamingData: apiHandler.processStreamingInfo(showData)
+//       };
+
+//       res.render("api/series-details", { show: showDetails })
+//     })
+//     .catch(err => next(err))
+  
+// }
+
+getSeriesDetails(imdbId) {
+  const options = {
+    method: 'GET',
+    url: '/get/basic',
+    params: {
+      imdb_id: imdbId,
+      country: 'es',
+    }
+  }
+
+  return this.axiosApp
+    .request(options)
+      .then(response => response.data)
+    .catch(err => console.error(err))
+}
+
+
   getFilteredSeries(req, res, next) {
     const { cursor, services, genres, year_min, year_max } = req.body
-    console.log(req.body)
+   
 
     const options = {
       method: 'GET',

@@ -59,7 +59,7 @@ class MoviesApiHandler {
 
     this.updatePreviousCursors(cursor);
 
-    console.log("Valor actual del cursor:", cursor);
+   
 
     const options = {
       method: 'GET',
@@ -90,7 +90,7 @@ class MoviesApiHandler {
           nextCursor: movieData.nextCursor
         })
 
-        console.log(response.data);
+
       })
       .catch(err => {
         next(err)
@@ -99,7 +99,7 @@ class MoviesApiHandler {
 
   getFilteredMovies(req, res, next) {
     const { cursor, services, genres, year_min, year_max } = req.body;
-    console.log(req.body)
+
 
     const options = {
       method: 'GET',
