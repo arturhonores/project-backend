@@ -52,28 +52,17 @@ class SeriesApiHandler {
     return streamingData
   }
 
-  getSeriesDetails(imdbId) {
-return this.axiosApp.get(`/search/id/${imdbId}`)
-    .then(response => {
-      const showData = response.data;
+// getSeriesDetails(imdb_id, country) {
+//   const queryParams = {
+//     country: country || 'es',
+//     id: imdb_id 
+//   }
+//   return this.axiosApp.get(`/get/basic`,  { params: queryParams });
+// }
 
-      const showDetails = {
-       
-        title: showData.title,
-        cast: showData.cast,
-        firstAirYear: showData.firstAirYear,
-        lastAirYear: showData.lastAirYear,
-        imdbRating: showData.imdbRating,
-        genres: showData.genres,
-        creators: showData.creators,
-        seasonCount: showData.seasonCount,
-        posterPath: showData.posterPath,        
-        streamingData: this.processStreamingInfo(showData)
-      }
 
-      return showDetails;
-    })
-  }
+
+
 
   getSeries(req, res, next) {
     const cursor = req.query.cursor || ''
