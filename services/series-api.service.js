@@ -52,17 +52,6 @@ class SeriesApiHandler {
     return streamingData
   }
 
-// getSeriesDetails(imdb_id, country) {
-//   const queryParams = {
-//     country: country || 'es',
-//     id: imdb_id 
-//   }
-//   return this.axiosApp.get(`/get/basic`,  { params: queryParams });
-// }
-
-
-
-
 
   getSeries(req, res, next) {
     const cursor = req.query.cursor || ''

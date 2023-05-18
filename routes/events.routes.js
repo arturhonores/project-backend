@@ -6,7 +6,6 @@ const Event = require('../models/Event.model')
 
 // create event
 router.get("/eventos/crear", isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
-
     res.render('events/create-event')
 
 })
@@ -92,16 +91,15 @@ router.post("/eventos/inscribirse/:event_id", isLoggedIn, (req, res, next) => {
         .catch(err => next(err));
 });
 
-//unsubscribe from an event
+// unsubscribe from an event
 router.post("/eventos/desinscribirse/:event_id", isLoggedIn, (req, res, next) => {
     const { event_id } = req.params;
     const user_id = req.session.currentUser._id;
 
-    Event.findByIdAndDelete(event_id, { $addToSet: { participants: user_id } })
+    Event.findByIdAndUpdate(event_id, { $pull: { participants: user_id } })
         .then(() => res.redirect("/perfil"))
         .catch(err => next(err));
 });
-
 
 
 module.exports = router

@@ -19,7 +19,6 @@ router.get("/perfil", isLoggedIn, (req, res, next) => {
 })
 
 // edit profile
-
 router.get("/perfil/editar-perfil/:user_id", isLoggedIn, (req, res, next) => {
 
     const { user_id } = req.params

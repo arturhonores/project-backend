@@ -35,6 +35,18 @@
       <ul>
         {{#each events}}
           <li>{{this.name}}-{{this.location}}-{{this.date}}</li>
+          <form
+            action="/eventos/desinscribirse/{{this._id}}"
+            method="POST"
+            style="margin-botom:0"
+            class="d-inline"
+          >
+            <input
+              type="submit"
+              value="desuscribirme"
+              class="btn btn-danger text-white"
+            />
+          </form>
         {{/each}}
       </ul>
     </div>
