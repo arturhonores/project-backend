@@ -31,19 +31,19 @@ class MoviesApiHandler {
 
   updatePreviousCursors(cursor) {
     if (cursor) {
-      const index = this.previousCursors.indexOf(cursor);
+      const index = this.previousCursors.indexOf(cursor)
       if (index !== -1) {
-        this.previousCursors = this.previousCursors.slice(0, index);
+        this.previousCursors = this.previousCursors.slice(0, index)
       } else {
-        this.previousCursors.push(cursor);
+        this.previousCursors.push(cursor)
       }
     }
   }
 
   //iterar dentro del objeto streamingInfo
   processStreamingInfo(movie) {
-    const streamingData = {};
-    const streamingInfo = movie.streamingInfo['es'];
+    const streamingData = {}
+    const streamingInfo = movie.streamingInfo['es']
 
     for (const platform in streamingInfo) {
       streamingData[platform] = {
@@ -55,8 +55,8 @@ class MoviesApiHandler {
 
 
   getMovies(req) {
-    const cursor = req.query.cursor || '';
-    this.updatePreviousCursors(cursor);
+    const cursor = req.query.cursor || ''
+    this.updatePreviousCursors(cursor)
 
     const options = {
       method: 'GET',
@@ -73,9 +73,8 @@ class MoviesApiHandler {
           return {
             ...movie,
             streamingData: this.processStreamingInfo(movie),
-          };
-        });
-
+          }
+        })
         return {
           movie: {
             ...movieData,
@@ -89,8 +88,24 @@ class MoviesApiHandler {
       })
   }
 
+getMovieDetails(imdbId) {
+  const options = {
+    method: 'GET',
+    url: '/get/basic',
+    params: {
+      imdb_id: imdbId,
+      country: 'es',
+    }
+  }
+
+  return this.axiosApp
+    .request(options)
+      .then(response => response.data)
+    .catch(err => console.error(err))
+}
+
   getFilteredMovies(req) {
-    const { cursor, services, genres, year_min, year_max } = req.body;
+    const { cursor, services, genres, year_min, year_max } = req.body
 
     const options = {
       method: 'GET',
@@ -123,11 +138,9 @@ class MoviesApiHandler {
           previousCursor: this.previousCursors[this.previousCursors.length - 2],
           hasMore: movieData.hasMore,
           nextCursor: movieData.nextCursor
-        };
+        }
       })
   }
-
-
 }
 
 

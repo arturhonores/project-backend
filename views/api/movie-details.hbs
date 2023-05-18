@@ -4,24 +4,23 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src={{series.posterURLs.original}} class="img-fluid rounded-start" alt="{{series.title}}">
+                        <img src={{movie.posterURLs.original}} class="img-fluid rounded-start" alt="{{movie.title}}">
                     </div>
                     <div class="col-md-8 text-dark">
                         <div class="card-body p-5">
-                            <h2 class="card-title text-center">{{series.title}}</h2>
-                            <h6 class="card-text">Created by {{series.creators}}</h6>
-                            <p class="card-text">{{series.overview}}</p>
+                            <h2 class="card-title">{{movie.title}}</h2>
+                            <h6 class="card-text">Created by {{movie.creators}}</h6>
+                            <p class="card-text">{{movie.overview}}</p>
                             <h5>Cast</h5>
-                            <p class="card-text">{{series.cast}} </p>
+                            <p class="card-text">{{movie.cast}} </p>
                             <h5>Genres</h5>
-                            {{#each series.genres}}
+                            {{#each movie.genres}}
                             <span class="card-text">{{name}} | </span>
                             {{/each}}
-                            <h5 class="mt-3">Seasons</h5>
-                            <p class="card-text">{{series.seasonCount}} | {{series.status.statusText}}</p>
+
 
                             <p class="card-text"> <i class="fas fa-star" style="color: #fcd703;"></i>
-                                {{series.imdbRating}}/100
+                                {{movie.imdbRating}}/100
                             </p>
                             {{#each streamingInfo.[platform].[0]}}
 
@@ -31,6 +30,10 @@
 
                             </a>
                             {{/each}}
+
+                            {{!-- <form action="/" method="POST" class="d-inline">
+                                <input type="submit" value="fav" class="btn btn-primary" />
+                            </form> --}}
                         </div>
                     </div>
                 </div>

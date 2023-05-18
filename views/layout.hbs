@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/08ab5f7282.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -46,6 +47,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/desconectar">Logout</a>
           </li>
+          <a class="nav-item">
+            <img src="{{loggedUser.avatar}}" class="rounded-circle ms-3" width="45">
+          </a>
           {{else}}
           <li class="nav-item">
             <a class="nav-link" href="/registro">Sign Up</a>
