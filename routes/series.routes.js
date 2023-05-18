@@ -19,7 +19,6 @@ router.get('/series/detalles/:imdbId', (req, res, next) => {
 
   apiHandler.getSeriesDetails(imdbId)
     .then(seriesDetails => {
-      console.log(seriesDetails)
       res.render('api/series-details', { series: seriesDetails.result })
     })
     .catch(err => {next(err)})

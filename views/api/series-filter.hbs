@@ -133,10 +133,11 @@
             </div>
 
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn blue-bt">Submit</button>
             </div>
         </form>
         <div class="container pt-2 h-auto">
+            <hr>
 
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
                 {{#each show.result}}
@@ -145,16 +146,16 @@
                         <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
                         <div class="card-body text-center">
                             <h5 class="card-title">{{title}}</h5>
-                            <p>IMDB Rating :{{imdbRating}}</p>
-                            <p>Release year: {{firstAirYear}} </p>
+                            <p>Seasons: {{seasonCount}}</p>
+
+                            <a href="/series/detalles/{{imdbId}}" class="btn green-bt">Ver detalles</a>
                             {{#each streamingData}}
-                            <p>{{@key}}</p>
-                            {{!-- <a href="{{this.url}}" class="btn btn-warning" target="_blank">
+
+                            <a href="{{this.url}}" class="btn btn-outline-secondary mt-2 text-dark" target="_blank">
                                 Watch on
-                                {{@key}} --}}
+                                {{@key}}
                             </a>
                             {{/each}}
-                            <a href="/series/detalles/{{imdbId}}" class="btn btn-warning">Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -167,48 +168,17 @@
                         <input type="hidden" name="services" value="{{services}}" />
                         <input type="hidden" name="genres" value="{{genres}}" />
                         <input type="hidden" name="year_min" value="{{firstAirYear}}" />
-                        <button type="submit" class="btn btn-warning text-white">Previous</button>
+                        <button type="submit" class="btn green-bt text-white">Previous</button>
                     </form>
                     <form action="/series-filtradas" method="POST" class="d-inline">
                         <input type="hidden" name="cursor" value="{{nextCursor}}" />
                         <input type="hidden" name="services" value="{{services}}" />
                         <input type="hidden" name="genres" value="{{genres}}" />
                         <input type="hidden" name="year_min" value="{{firstAirYear}}" />
-                        <button type="submit" class="btn btn-warning text-white">Next</button>
+                        <button type="submit" class="btn green-bt text-white">Next</button>
                     </form>
-
                 </div>
             </div>
         </div>
-
-
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
-            {{#each show.result}}
-            <div class="col">
-                <div class="card">
-                    <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
-                    <div class="card-body text-center">
-                        <h5 class="card-title">{{title}}</h5>
-                        <p>IMDB Rating :{{imdbRating}}</p>
-                        <p>Release year: {{firstAirYear}} </p>
-                        {{#each streamingData}}
-                        <p>{{@key}}</p>
-
-                        {{!-- <a href="{{this.url}}" class="btn btn-warning" target="_blank">
-                            Watch on
-                            {{@key}}
-                        </a> --}}
-                        {{/each}}
-                        <a href="/series/detalles/{{imdbId}}" class="btn btn-warning">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-
-
-
-
-
     </div>
 </div>

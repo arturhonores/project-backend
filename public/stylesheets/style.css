@@ -19,6 +19,25 @@ body {
   z-index: 0;
 }
 
+.boton {
+  padding: 40px 50px 40px 50px;
+  font-weight: 700;
+  font-size: 40px;
+
+}
+
+.yellow-bt {
+  background-color: #F4B400;
+}
+
+.green-bt {
+  background-color: #0F9D58;
+}
+
+.blue-bt {
+  background-color: #4285F4;
+}
+
 .fondo-login {
   background-image: url("../images/image-login.jpg");
   background-size: cover;
