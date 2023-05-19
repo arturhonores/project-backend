@@ -1,81 +1,183 @@
 <div class="container pt-5 mt-5">
-  <form class="row gy-2 gx-3 align-items-center text-white" action="/peliculas-filtradas" method="POST">
+  <form
+    class="row gy-2 gx-3 align-items-center text-white"
+    action="/peliculas-filtradas"
+    method="POST"
+  >
     <div class="col-12 d-flex justify-content-between">
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAction" value="28" />
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAction"
+          value="28"
+        />
         <label class="form-check-label" for="inlineRadioAction">Action</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="12" />
-        <label class="form-check-label" for="inlineRadioAdventure">Adventure</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="12"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Adventure</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="16" />
-        <label class="form-check-label" for="inlineRadioAdventure">Animation</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="16"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Animation</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="35" />
-        <label class="form-check-label" for="inlineRadioAdventure">Comedy</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="35"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Comedy</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="18" />
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="18"
+        />
         <label class="form-check-label" for="inlineRadioAdventure">Drama</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="27" />
-        <label class="form-check-label" for="inlineRadioAdventure">Horror</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="27"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Horror</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="4" />
-        <label class="form-check-label" for="inlineRadioAdventure">Musical</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="4"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Musical</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="10749" />
-        <label class="form-check-label" for="inlineRadioAdventure">Romance</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="10749"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Romance</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="genres" id="inlineRadioAdventure" value="53" />
-        <label class="form-check-label" for="inlineRadioAdventure">Thriller</label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="genres"
+          id="inlineRadioAdventure"
+          value="53"
+        />
+        <label
+          class="form-check-label"
+          for="inlineRadioAdventure"
+        >Thriller</label>
       </div>
     </div>
     <div class="d-flex justify-content-between">
-      {{!-- <div class="col-auto"> --}}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="netflix" id="flexChecnetflix" name="services" />
-          <label class="form-check-label" for="flexChecnetflix">
-            <img src="/images/Netflix-logo.svg" alt="" width="90px">
-          </label>
-        </div>
-        {{!--
-      </div> --}}
-      {{!-- <div class="col-auto"> --}}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="prime.subscription" id="flexCheckprime"
-            name="services" />
-          <label class="form-check-label" for="flexCheckprime">
-            <img src="/images/primed-video-edit-01.svg" alt="" width="90px">
-          </label>
-        </div>
-        {{!--
-      </div> --}}
-      {{!-- <div class="col-auto"> --}}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="disney" id="flexCheckdisney" name="services" />
-          <label class="form-check-label" for="flexCheckdisney">
-            <img src="/images/disney-plus-logo.svg" alt="" width="90px">
-          </label>
-        </div>
-        {{!--
-      </div> --}}
-      {{!-- <div class="col-auto"> --}}
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="hbo" id="flexCheckhbo" name="services" />
-          <label class="form-check-label" for="flexCheckhbo">
-            <img src="/images/hbo-max-logo.svg" alt="" width="90px">
-          </label>
-        </div>
-        {{!--
-      </div> --}}
+      {{! <div class="col-auto"> }}
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="netflix"
+          id="flexChecnetflix"
+          name="services"
+        />
+        <label class="form-check-label" for="flexChecnetflix">
+          <img src="/images/Netflix-logo.svg" alt="" width="90px" />
+        </label>
+      </div>
+      {{!
+      </div> }}
+      {{! <div class="col-auto"> }}
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="prime.subscription"
+          id="flexCheckprime"
+          name="services"
+        />
+        <label class="form-check-label" for="flexCheckprime">
+          <img src="/images/primed-video-edit-01.svg" alt="" width="90px" />
+        </label>
+      </div>
+      {{!
+      </div> }}
+      {{! <div class="col-auto"> }}
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="disney"
+          id="flexCheckdisney"
+          name="services"
+        />
+        <label class="form-check-label" for="flexCheckdisney">
+          <img src="/images/disney-plus-logo.svg" alt="" width="90px" />
+        </label>
+      </div>
+      {{!
+      </div> }}
+      {{! <div class="col-auto"> }}
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="hbo"
+          id="flexCheckhbo"
+          name="services"
+        />
+        <label class="form-check-label" for="flexCheckhbo">
+          <img src="/images/hbo-max-logo.svg" alt="" width="90px" />
+        </label>
+      </div>
+      {{!
+      </div> }}
       <div class="col-auto">
         <select class="form-select" aria-label="Release year" name="year_min">
           <option selected>Release year</option>
@@ -121,21 +223,34 @@
     <h1 class="text-white text-center pt-5">Results</h1>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
       {{#each movie.result}}
-      <div class="col">
-        <div class="card-100">
-          <img src="https://image.tmdb.org/t/p/original{{posterPath}}" class="card-img-top" alt="..." />
-          <div class="card-body text-center d-flex flex-column justify-content-between">
-            <h5 class="card-title">{{title}}</h5>
-            <p>IMDB Rating :{{imdbRating}}</p>
-            <p>year : {{year}} </p>
-            {{#each streamingData}}
-            <p>{{@key}}</p>
-            </a>
-            {{/each}}
-            <a href="/series/detalles/{{imdbId}}" class="btn yellow-bt">Ver detalles</a>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="https://image.tmdb.org/t/p/original{{posterPath}}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div
+              class="card-body text-center d-flex flex-column justify-content-between"
+            >
+              <h5 class="card-title">{{title}}</h5>
+              <p>year : {{year}} </p>
+              <a href="/series/detalles/{{imdbId}}" class="btn yellow-bt">Ver
+                detalles</a>
+              {{#each streamingData}}
+                <a
+                  href="{{this.url}}"
+                  class="btn btn-outline-secondary mt-2 text-dark"
+                  target="_blank"
+                >
+                  Watch on
+                  {{@key}}
+                </a>
+                {{!-- <p>{{@key}}</p> --}}
+              {{/each}}
+            </div>
           </div>
         </div>
-      </div>
       {{/each}}
     </div>
     <div class="row">
@@ -145,7 +260,10 @@
           <input type="hidden" name="services" value="{{services}}" />
           <input type="hidden" name="genres" value="{{genres}}" />
           <input type="hidden" name="year_min" value="{{year_min}}" />
-          <button type="submit" class="btn yellow-bt text-dark">Previous</button>
+          <button
+            type="submit"
+            class="btn yellow-bt text-dark"
+          >Previous</button>
         </form>
         <form action="/peliculas-filtradas" method="POST" class="d-inline">
           <input type="hidden" name="cursor" value="{{nextCursor}}" />
