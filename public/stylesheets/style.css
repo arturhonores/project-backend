@@ -30,8 +30,16 @@ body {
   background-color: #F4B400;
 }
 
+.yellow-bt:hover {
+  background-color: #edc75e;
+}
+
 .green-bt {
   background-color: #0F9D58;
+}
+
+.green-bt:hover {
+  background-color: #6eb895;
 }
 
 .blue-bt {

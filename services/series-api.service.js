@@ -40,7 +40,7 @@ class SeriesApiHandler {
     }
   }
 
-  processStreamingInfo(show) {
+    processStreamingInfo(show) {
     const streamingData = {}
     const streamingInfo = show.streamingInfo['es']
 
@@ -58,7 +58,7 @@ class SeriesApiHandler {
 
     const options = {
       method: 'GET',
-      url: '/search/pro',
+      url: '/search/basic',
       params: this.createQueryParams(cursor)
     }
 
@@ -109,7 +109,7 @@ class SeriesApiHandler {
 
     const options = {
       method: 'GET',
-      url: '/search/pro',
+      url: '/search/basic',
       params: this.createQueryParams(cursor, services, genres, year_min, year_max)
     }
 

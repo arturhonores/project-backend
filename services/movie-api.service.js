@@ -60,7 +60,7 @@ class MoviesApiHandler {
 
     const options = {
       method: 'GET',
-      url: '/search/pro',
+      url: '/search/basic',
       params: this.createQueryParams(cursor)
     }
 
@@ -109,7 +109,7 @@ getMovieDetails(imdbId) {
 
     const options = {
       method: 'GET',
-      url: '/search/pro',
+      url: '/search/basic',
       params: this.createQueryParams(cursor, services, genres, year_min, year_max)
     }
 

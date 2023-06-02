@@ -4,17 +4,10 @@
       <h2>Welcome, {{user.username}}</h2>
     </div>
     <div class="col text-end">
-      <form
-        action="/perfil/eliminar-perfil/{{user._id}}"
-        method="POST"
-        style="display: inline"
-      >
+      <form action="/perfil/eliminar-perfil/{{user._id}}" method="POST" style="display: inline">
         <input type="submit" value="Eliminar perfil" class="btn btn-danger" />
       </form>
-      <a
-        href="/perfil/editar-perfil/{{user._id}}"
-        class="btn btn-success"
-      >Editar perfil</a>
+      <a href="/perfil/editar-perfil/{{user._id}}" class="btn btn-success">Editar perfil</a>
     </div>
     <hr />
   </div>
@@ -33,23 +26,16 @@
     <div class="col">
       <h5 class="pb-2">Tus eventos</h5>
       {{#each events}}
-        <div class="mb-4">
-          <h6 class=""><i class="bi bi-calendar-event"></i> {{this.name}}</h6>
-          <p class="mb-2">Lugar: {{this.location}}</p>
-          <p>Fecha y Hora: {{this.date}}</p>
-          <form
-            action="/eventos/desinscribirse/{{this._id}}"
-            method="POST"
-            style="margin-botom:0"
-            class="d-inline"
-          >
-            <input
-              type="submit"
-              value="unsubscribe"
-              class="btn btn-danger text-white"
-            />
-          </form>
-        </div>
+      <div class="mb-4">
+        <h6 class=""><i class="bi bi-calendar-event"></i> {{this.name}}</h6>
+        <p class="mb-2">Lugar: {{this.location}}</p>
+        <p>Fecha y Hora: {{this.date}}</p>
+        <a href="/eventos/detalles/{{this._id}}" class="btn green-bt">See details</a>
+
+        <form action="/eventos/desinscribirse/{{this._id}}" method="POST" style="margin-botom:0" class="d-inline">
+          <input type="submit" value="unsubscribe" class="btn btn-danger text-white" />
+        </form>
+      </div>
       {{/each}}
     </div>
   </div>
